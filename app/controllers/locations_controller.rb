@@ -16,18 +16,21 @@ class LocationsController < ApplicationController
     render 'index.json.jbuilder'
     end
     def create
-      location = Location.new(
-                              name: params[:name],
-                              address: params[:address],
-                              latitude: params[:latitude],
-                              longitude: params[:longitude],
-                              year: params[:year]
-                              )
-      if location.save
-        render json: location.as_json
-      else
-        render json: {errors: location.errors.full_messages}, status: :unprocessable_entity
-      end
+      if current_user && current_user.admin
+        location = Location.new(
+                                name: params[:name],
+                                address: params[:address],
+                                latitude: params[:latitude],
+                                longitude: params[:longitude],
+                                year: params[:year]
+                                )
+        if location.save
+          render json: location.as_json
+        else
+          render json: {errors: location.errors.full_messages}, status: :unprocessable_entity
+        end
+      else 
+        render json: {}, status: :unauthorized
     end
   def show
     input_id = params[:id]

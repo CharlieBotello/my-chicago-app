@@ -40,5 +40,19 @@ class LocationStoriesController < ApplicationController
 end
 
 
+    if location_story.save
+      render json: location_story.as_json
+    else
+      render json: {errors: location_story.errors.full_messages}, status: :unprocessable_entity
+    end 
+  end
+  def destroy
+    location_story = LocationStory.find(params[:id])
+    location_story.destroy
+    render json: {message: "Succesfully destroyed location_story id# #{location_story.id}"}
+  end
+end
+
+
 
 

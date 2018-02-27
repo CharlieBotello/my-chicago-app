@@ -1,19 +1,20 @@
 class UserLocationsController < ApplicationController
   def index
-    @user_locations = UserLocation.all 
+    @user_locations = current_user.user_locations 
     render 'index.json.jbuilder'    
   end
   def create
-    user_location = UserLocation.new(
-                                    user_id: params[:user_id],
+    @user_location = UserLocation.new(
+                                    user_id: current_user.id,
                                     location_id: params[:location_id],
                                     start_time: params[:start_time],
                                     end_time: params[:end_time]
                                     )
-    if user_location.save
-      render json: user_location.as_json
+    if @user_location.save
+      render 'show.json.jbuilder'
+      # render json: @user_location.as_json
     else
-      render json: {errors: user_location.errors.full_messages}, status: :unprocessable_entity 
+      render json: {errors: @user_location.errors.full_messages}, status: :unprocessable_entity 
     end
   end
   def show
