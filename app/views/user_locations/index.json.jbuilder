@@ -1,4 +1,4 @@
-json.array! @orders, partial: 'user_location', as: :user_location
+json.array! @user_locations, partial: 'user_location', as: :user_location
 
 # json.array! @user_locations.each do |user_location|
 #   json.id user_location.id

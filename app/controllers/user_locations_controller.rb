@@ -1,4 +1,6 @@
 class UserLocationsController < ApplicationController
+  before_action :authenticate_user
+  
   def index
     @user_locations = current_user.user_locations 
     render 'index.json.jbuilder'    
@@ -24,15 +26,15 @@ class UserLocationsController < ApplicationController
   end
   def update
     @user_location = UserLocation.find_by(id: input_id)
-    @user_location.user_id = params[:user_id] || user_location.user_id
-    @user_location.location_id = params[:location_id] || user_location.location_id
-    @user_location.start_time = params[:start_time] || user_location.start_time
-    @user_location.end_time = params[:end_time] || user_locations.end_time
+    @user_location.user_id = params[:user_id] || @user_location.user_id
+    @user_location.location_id = params[:location_id] || @user_location.location_id
+    @user_location.start_time = params[:start_time] || @user_location.start_time
+    @user_location.end_time = params[:end_time] || @user_locations.end_time
 
-    if location.save
-      render json: user_location.as_json
+    if user_location.save
+      render json: @user_location.as_json
     else
-      render json: {errors: user_location.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @user_location.errors.full_messages}, status: :unprocessable_entity
     end
   end
   def destroy
