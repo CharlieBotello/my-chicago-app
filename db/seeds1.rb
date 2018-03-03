@@ -21,27 +21,39 @@
 #                                 year: location['date_built']
 #                                 )
 #     end 
-
 # User.create!([
 #   {name: "Alex ", email: "alex@gmail.com", password: "password", password_confirmation: "password"},
 #   {name: "Joe Cool", email: "joe@gmail.com", password: "password", password_confirmation: "password"}
 # ])
 
-#STORY ORIGIN ___________________________
+# require 'unirest'
+#     response = Unirest.get("https://data.cityofchicago.org/resource/fpx9-pjqk.json")
+#     locations = response.body
+#     locations.each do |location|
+#       Location.create!(
+#                                 name: location['landmark_name'],
+#                                 address: location['address'],
+#                                 latitude: location['latitude'],
+#                                 longitude: location['longitude'],
+#                                 year: location['date_built']
+#                                 )
+#STORY ORIGIN 
 
 # Story.create!([
 #             {category: 0, title: "Charles Turzak House", content: "This design, which represents one of the earliest works by internationally recognized architect Bruce Goff, stands in pronounced contrast to traditional residences of the period. Designed as the home and studio for artist Charles Turzak and his family, it incorporated many features that did not typically appear in residential architecture until more than a decade later, including a carport, corner picture windows, and overhanging balconies. Goff also designed the Bachman House, another Chicago Landmark."},
 #             {category: 0, title: "Lion House - Lincoln Park Zoo", content: "Located in one of the country's oldest municipal zoological parks, the lion house blends both the grandly-scaled public architecture of the classical style with the innovative Prairie style developed by Chicago architects in the early 20th century. The building was designed by important architect Dwight H Perkins, an advocate of park and school reforms. The building has excellent brickwork and terra-cotta ornament, unique lion mosaics, and a grand interior with a vaulted Guastavino-tile ceiling, an innovative construction technology of the time"},
 #             {category: 0, title: "333 North Michigan Building", content: "Though it is known by its Michigan Avenue address, 333 North Michigan Avenue looks like it desperately wants to be one of the Wacker Drive crowd. Its narrow Wacker frontage features an 11-story tower section, while Michigan Avenue is left with the supporting wing. The intersection of Michigan Avenue and the Chicago River is the most highly prized piece of real estate in the city. These lots were claimed more than a hundred years ago by companies with timeless names like Tribune and Wrigley. 333 North Michigan Avenue doesn’t have a pedigree, but it still dates from that age. It was the last-built of the four original spectacular skyscrapers erected at this intersection, and is based on a losing entry for the Tribune Tower contest. Art Deco in form and materials, limestone and polished marble are used on the exterior. With its rounded corners and extreme streamlining, this could almost be an Art Moderne creation. Like all proper Art Deco buildings, this one features a series of exterior reliefs. In this case, they were executed by Fred M. Torrey, and honor the development of Chicago at this, the intersection where it was founded."},
-#             {category: 0, title: "Charles N. Loucks House", content: "Designed as a model home, this Queen Anne-style house was built for Irving Park land developer Charles N. Loucks. It is a fine example of 'pattern book architecture,', building designs sold through the mail--a popular method used to keep pace with housing demands in the rapidly-growing railroad suburbs of the time. The house is noteworthy for its colored beveled-glass windows, verandah with beaded spindle-work, applied metal ornament and its distinctive turret."},
+#             {category: 0, title: "Charles N. Loucks House", content: "Designed as a 'model home' and published in Tabor's Modern Homes in 1891, this Queen Anne-style house was built for Irving Park land developer Charles N. Loucks. It is a fine example of 'pattern book architecture,' which were building designs sold through the mail. This was a popular method used to keep pace with housing demands in the rapidly-growing railroad suburbs of the time. The house is noteworthy for its colored beveled-glass windows, verandah with beaded spindle-work, applied metal ornament and distinctive turret.
+#                 "},
 #             {category: 0, title: "Chicago Harbor Lighthouse", content: "With the activation of Chicago Harbor Lighthouse, the 1859 iron lighthouse, then known as Chicago River Lighthouse, was discontinued. Its lens was disassembled, boxed up, and shipped to Detroit. The skeletal iron tower was taken apart during June and July of 1894, and all parts were newly marked with white lead, punch, or chisel, so they could be reassembled as part of the new tower at Rawley Point, Wisconsin.The original fog signal houses that flanked Chicago Harbor Lighthouse were constructed of heavy framing lumber, which was covered with two-inch planking and then sheathed in corrugated iron. The structures measured eleven by twenty-four feet, and each housed engines and boilers to operate a ten-inch steam whistle. The whistles were in operation roughly 400 hours per year, though a report in 1904 record that they were in operation that year for “some 1,293 hours and consumed about 83 tons of coal and 10 cords of wood.” Sound deflectors were placed behind the whistles in 1901, and in 1912, oil engines were installed to drive a ten-inch compressed air chime whistle, that gave a three-second blast every thirty seconds. On June 12, 1917, Congress appropriated $88,000 for relocating Chicago Harbor Lighthouse. The existing breakwater had been extended southward, and a second breakwater was being constructed south of it. The War Department had agreed to build a stone and timber crib at the south end of the north arm of the new breakwater to serve as the foundation pier for the Harbor Lighthouse, along with foundations for minor lights at the ends of the southern breakwater."},
 #             {category: 0, title: "Lorraine Hansberry House", content: "For its associations with the Chicago Black Renaissance literary movement and iconic 20th-century African American playwright Lorraine Hansberry, the Lorraine Hansberry House possesses exceptional historic and cultural significance. Although subject to a racially-discriminatory housing covenant, this building was purchased in 1937 by African-American real estate developer Carl Hansberry. Despite threats, Hansberry moved his family into the building and waged a three-year-long battle culminating in a U.S. Supreme Court decision that was an important victory in the effort to outlaw racially-restrictive housing covenants. Hansberry's daughter, pioneering playwright Lorraine Hansberry, drew inspiration from this traumatic experience when writing A Raisin in the Sun. This groundbreaking play was the first drama by an African-American woman to be produced on Broadway."},
 #             {category: 0, title: "LaSalle Street Cable Car Powerhouse", content: "The LaSalle Street Cable Car Powerhouse is a rare surviving artifact of Chicago's cable car system, which at its peak in the 1890s was the largest in the country, operating thousands of cable cars over 82 miles of track. The powerhouse was built by the North Chicago Street Railroad Company organized by Charles Tyson Yerkes, the leading transit entrepreneur in Chicago during the late 19th century. At the height of his influence, Yerkes controlled eight separate street railway companies and 250 miles of track in the city. The powerhouse was constructed to house engines that moved two miles of cable through channels laid in streets on the Near North Side and in the Loop business district. Those cables, in turn, pulled the thousands of cable cars that, at the peak of their operation, brought approximately 100,000 workers into downtown Chicago each day. The LaSalle Street Cable Car Powerhouse helped make possible the rapid development of the city's outlying North Side neighborhoods during one of the greatest boom periods in the history of Chicago."}
+    
 
 #     ])
 
 
-# Chicago stories _______________________________________
+# Chicago stories 
 # Story.create!([
 #             {category: 1, title: "1939", content: "It might seem absolutely inconceivable that there was a time in Chicago in which a fascist rally would attract thousands of people. But on June 18, 1939, the American flag and Nazi swastika banner flew side by side in what is now known as Merrimac Park. Chicago newspapers estimated that between 4,000 and 8,000 assembled to support the German-American Bund, an organization whose stated mission was to 'defend the Constitution, Flag, and Institutions of these United States of America.' But as at other Bund gatherings, those that spoke showed nothing but contempt for American democracy. There was remarkably little ideological difference between the German-American Bund and the Nazi Party in Germany. Several hundred men and boys dressed in uniforms resembling those worn by Nazi storm troopers. Vendors sold beer, brats, and anti-Semitic literature. At least 100 police officers were kept on reserve in case of a riot, but the only disturbance of the day involved a handful of brownshirts who had confiscated the film of a newspaper photographer. 
 #                 The crowd would be safe from hearing from the groups it wished to eliminate from American society. Praising Adolf Hitler, Bund leader Fritz Kuhn appealed to the enthusiastic crowd to carry on his organization's 'patriotic fight' to 'free America.' The event, which began with 'The Star-Spangled Banner,'' ended with a Hitler salute and German hymns. The story of Nazism in Chicago began nearly 15 years earlier with the foundation of the Chicago chapter of the Teutonia Society, a group made up of working-class German immigrants who supported the National Socialist Party in Germany. Its national leader, a Chicago printer named Fritz Gissebl, would eventually end up as a high-ranking SS officer in Nazi-occupied Poland, although the group functioned more as a Hitler fan club and anti-Semitic drinking society than a fearsome political organization. When it disbanded in 1932, it had only about 500 members nationwide. 
@@ -113,7 +125,7 @@
 #                         A monument commemorating the “Haymarket martyrs” was erected in Waldheim Cemetery in 1893. In 1889 a statue honoring the dead police was erected in the Haymarket. Toppled by student radicals in 1969 and 1970, it was moved to the Chicago Police Academy."}
                    
 #     ])
-
+# National story ____________________--
 # Story.create!([
 #                 {category: 2, title: "1939", content: "At 4:45 a.m., some 1.5 million German troops invade Poland all along its 1,750-mile border with German-controlled territory. Simultaneously, the German Luftwaffe bombed Polish airfields, and German warships and U-boats attacked Polish naval forces in the Baltic Sea. Nazi leader Adolf Hitler claimed the massive invasion was a defensive action, but Britain and France were not convinced. On September 3, they declared war on Germany, initiating World War II.
 
@@ -193,11 +205,11 @@
 
 # Under the Dawes Act, the head of each Native American family received 160 acres in an effort to encourage Native Americans to take up farming, live in smaller family units that were considered more American and renounce tribal loyalties. The government held such lands in trust for 25 years, until the recipients could prove themselves self-sufficient farmers. Before the family could sell their allotment, they were required to get a certificate of competency. If the family did not succeed at farming, the land reverted back to the federal government for sale, usually to white settlers. The Dawes Act reduced Native American landholdings from 138 million acres in 1887 to 78 million in 1900 and continued the trend of white settlement on previously Native American-held land. In addition, the law created federally funded boarding schools designed to assimilate Native American children into white society. Family and cultural ties were practically destroyed by the now-notorious boarding schools, in which children were punished for speaking their native language or performing native rituals.
 
-# The Dawes Severalty Act was finally abolished in 1934, during President Franklin Roosevelt’s first term."},
+# The Dawes Severalty Act was finally abolished in 1934, during President Franklin Roosevelt’s first term."}
           
 #     ])
 
-
+# locationStory ______________
 # LocationStory.create!([
 #                 {location_id: 1, story_id: 1},
 #                 {location_id: 2, story_id: 2},
@@ -207,26 +219,39 @@
 #                 {location_id: 6, story_id: 6},
 #                 {location_id: 7, story_id: 7}
 
+
+
 #     ])
+    # locations.each do |location|
+    #   puts "ID: #{location['id']}"
+    #   puts "Name: #{location['landmark_name']}"
+    #   puts "Year built: #{location['date_built']}"
+    #   puts ""
+    #   puts "Adress: #{location['address']}"
+    #   puts "Latitude: #{location['latitude']}"
+    #   puts "Longitude: #{location['longitude']} "
+    #   puts ""
+    #   puts "-" * 50
+    #   puts ""
+    # end
+#   end
+# Location.create!([
+#               {name: "Charles Turzak House", address: "7059 N Olcott Ave", latitude: "42.0095630785", longitude: "-87.813251935", year: "1938-39"},
+#               {name: "Lion House - Lincoln Park Zoo", address: "2132 N Stockton Dr", latitude: "41.92133817", longitude: "-87.6333359813", year: "1912"},
+#               {name: "Charles Turzak House", address: "7059 N Olcott Ave", latitude: "42.0095630785", longitude: "-87.813251935", year: "1938-39"},
+#               {name: "Charles Turzak House", address: "7059 N Olcott Ave", latitude: "42.0095630785", longitude: "-87.813251935", year: "1938-39"},
+#               {name: "Charles Turzak House", address: "7059 N Olcott Ave", latitude: "42.0095630785", longitude: "-87.813251935", year: "1938-39"},
+#               {name: "Charles Turzak House", address: "7059 N Olcott Ave", latitude: "42.0095630785", longitude: "-87.813251935", year: "1938-39"},
 
-
-
-
-
-
-
-
-
-
+# {location_id: 1, image_url: "http://s3.amazonaws.com/architecture-org/files/buildings/auditorium-theater-04.jpg"},
 
 # Image.create!([
-#                 {location_id: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Turzak_House_2.JPG/1200px-Turzak_House_2.JPG"},
-#               {location_id: 2, image_url: "http://landmarkhunter.com/photos/52/44/524402-L.jpg"},
-#               {location_id: 3, image_url: "https://s3.amazonaws.com/architecture-org/files/modules/333nmichigan-ericallixrogers-9.jpg"},
-#              {location_id: 4, image_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Charles_N._Loucks_House_%289160572215%29.jpg"},
-#              {location_id: 5, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Chicago-lighthouse.jpg/1200px-Chicago-lighthouse.jpg"},
-#              {location_id: 6, image_url: "https://c1.staticflickr.com/8/7607/27035518042_b28a66430b_b.jpg"},
-#               {location_id: 7, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/LaSalle_Street_Cable_Car_Powerhouse_2.JPG/1200px-LaSalle_Street_Cable_Car_Powerhouse_2.JPG"}
+                # {location_id: 1, image_url: "http://s3.amazonaws.com/architecture-org/files/buildings/auditorium-theater-04.jpg"},
+#               {location_id: 2, image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9vOSci_138OJ1Z-mBMKfaw6AabU_rwbw64DbiALtn5QDB2xhwA"},
+#               {location_id: 3, image_url: "https://media.gettyimages.com/photos/interior-of-palmer-house-hotel-lobby-in-chicago-picture-id526253359"},
+#               {location_id: 4, image_url: "https://res.cloudinary.com/fleetnation/image/private/c_fit,w_1120/g_south,l_text:style_gothic2:%C2%A9%20Sherlon%20Gerard,o_20,y_10/g_center,l_watermark4,o_25,y_50/v1445991127/x2gmlke78mcxich0e7ks.jpg"},
+#              {location_id: 5, image_url: "http://www.roadarch.com/12/7/cmchouse2.jpg"},
+#               {location_id: 6, image_url: "https://c1.staticflickr.com/8/7187/6864366131_8bcb6be7b2_b.jpg"}
 #                   ])
 
 
@@ -251,8 +276,4 @@
 #               {location_id: 5, story_id: 5, source: "Myron Bachman House"},
 #               {location_id: 6, story_id: 6, source: "Samuel M. Nickerson House"}
 #                   ])
-
-
-
-
 

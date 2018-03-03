@@ -1,6 +1,6 @@
 class Story < ApplicationRecord
   has_many :location_stories
-  enum category: {entertaintment: 0, current_event: 1, year: 2}
+  enum category: {origins: 0, chicago_event: 1, world_event: 2}
 
   def as_json
     {

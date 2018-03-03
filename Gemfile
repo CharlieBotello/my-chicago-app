@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'knock'
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'unirest'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
