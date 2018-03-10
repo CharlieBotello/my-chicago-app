@@ -15,25 +15,27 @@ class LocationsController < ApplicationController
     else
     end       
     render 'index.json.jbuilder'
-    end
-    def create
-      if current_user && current_user.admin
-        @location = Location.new(
-                                name: params[:name],
-                                address: params[:address],
-                                latitude: params[:latitude],
-                                longitude: params[:longitude],
-                                year: params[:year]
-                                )
-        if @location.save
-          render json: @location.as_json
-        else
-          render json: {errors: @location.errors.full_messages}, status: :unprocessable_entity
-        end
-      else 
-        render json: {message: "You are not Authorized"}, status: :unauthorized
+  end
+
+  def create
+    if current_user && current_user.admin
+      @location = Location.new(
+                              name: params[:name],
+                              address: params[:address],
+                              latitude: params[:latitude],
+                              longitude: params[:longitude],
+                              year: params[:year]
+                              )
+      if @location.save
+        render json: @location.as_json
+      else
+        render json: {errors: @location.errors.full_messages}, status: :unprocessable_entity
       end
+    else 
+      render json: {message: "You are not Authorized"}, status: :unauthorized
     end
+  end
+
   def show
     input_id = params[:id]
     @location = Location.find_by(id: input_id)
