@@ -3,70 +3,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>History</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="chicago.css">
+  <title>Chicago</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" href="../../favicon.ico"> -->
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C500%2C600%2C700%2C800%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="/main/assets/vendor/bootstrap/bootstrap.min.css">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="/main/assets/vendor/icon-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/main/assets/vendor/icon-line/css/simple-line-icons.css">
+  <link rel="stylesheet" href="/main/assets/vendor/icon-hs/style.css">
+  <link rel="stylesheet" href="/main/assets/vendor/hamburgers/hamburgers.min.css">
+  <link rel="stylesheet" href="/main/assets/vendor/animate.css">
+  <link rel="stylesheet" href="/main/assets/vendor/slick-carousel/slick/slick.css">
+
+  <!-- CSS Template -->
+  <link rel="stylesheet" href="/main/assets/css/styles.op-architecture.css">
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="/main/assets/css/custom.css">
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="index.js" defer></script>
-</head>
-<body>
-  <div id="vue-app">
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  </head>
+
+  <body>
+    <main id="vue-app">
+            <!-- Header v1 -->
     
+      <header id="js-header" class="u-header u-header--sticky-top u-header--change-appearance"
+              data-header-fix-moment="100">
+        <div class="dark-theme u-header__section g-bg-black-opacity-0_4 g-transition-0_3 g-py-8 g-py-17--md"
+             data-header-fix-moment-exclude="dark-theme g-bg-black-opacity-0_4 g-py-17--md"
+             data-header-fix-moment-classes="light-theme u-theme-shadow-v1 g-bg-white g-py-10--md">
+          <nav class="navbar navbar-expand-lg p-0 g-px-15">
+            <div class="container g-pos-rel">
+              <a href="/" class="g-hidden-lg-up navbar-brand mr-0">
+                <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
+                     data-header-fix-moment-exclude="d-block"
+                     data-header-fix-moment-classes="d-none">
 
-     <a class="navbar-brand" href="/#/">History</a>
-     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
+                <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
+                     data-header-fix-moment-exclude="d-none"
+                     data-header-fix-moment-classes="d-block">
+              </a>
 
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav mr-auto">
-         <li class="nav-item active">
-           <a class="nav-link" href="/#/">Home<span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#">Link</a>
-         </li>
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Signup
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item" href="/#/signup">Signup</a>
-             <a class="dropdown-item" href="/#/login">Login</a>
-             <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="/#/logout">Logout</a>
-           </div>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link disabled" href="#">Disabled</a>
-         </li>
-       </ul>
-       <form class="form-inline my-2 my-lg-0">
-         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-       </form>
-     </div>
-   </nav>
+              <!-- Navigation -->
+              <div class="collapse navbar-collapse align-items-center flex-sm-row" id="navBar">
+                <ul class="js-scroll-nav navbar-nav align-items-lg-center text-uppercase g-font-weight-700 g-letter-spacing-1 g-font-size-12 g-pt-20 g-pt-0--lg mx-auto"
+                    data-splitted-breakpoint="992">
+                  <li class="nav-item g-mr-30--lg g-mb-7 g-mb-0--lg active">
+                    <a href="/#/" class="nav-link p-0">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#about" class="nav-link p-0">About</a>
+                  </li>
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#services" class="nav-link p-0">Services</a>
+                  </li>
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#projects" class="nav-link p-0">Projects</a>
+                  </li>
+
+                  <!-- Logo -->
+                  <li class="g-hidden-lg-down nav-logo-item g-mx-15--lg">
+                    <a href="#" class="js-go-to navbar-brand mr-0"
+                       data-type="static">
+                      <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
+                           data-header-fix-moment-exclude="d-block"
+                           data-header-fix-moment-classes="d-none">
+
+                      <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
+                           data-header-fix-moment-exclude="d-none"
+                           data-header-fix-moment-classes="d-block">
+                    </a>
+                  </li>
+                  <!-- End Logo -->
+
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#team" class="nav-link p-0">Team</a>
+                  </li>
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#processes" class="nav-link p-0">Processes</a>
+                  </li>
+                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                    <a href="#awards" class="nav-link p-0">Awards</a>
+                  </li>
+                  <li class="nav-item g-ml-30--lg">
+                    <a href="#contact" class="nav-link p-0">Contact</a>
+                  </li>
+                </ul>
+              
+              </div>
+
+              <!-- End Navigation -->
+              <!-- Responsive Toggle Button -->
+              <button class="navbar-toggler btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-15 g-right-0" type="button"
+                      aria-label="Toggle navigation"
+                      aria-expanded="false"
+                      aria-controls="navBar"
+                      data-toggle="collapse"
+                      data-target="#navBar">
+                <span class="hamburger hamburger--slider">
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </span>
+              </button>
+              <!-- End Responsive Toggle Button -->
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- End Header v1 -->
+
+      <!-- Section Content -->
+      <section id="home" class="u-bg-overlay g-pos-rel g-theme-bg-blue-dark-v1-opacity-0_8--after">
+        <div class="js-carousel"
+             data-autoplay="true"
+             data-infinite="true"
+             data-fade="true"
+             data-speed="5000">
+          <div class="js-slide g-bg-img-hero g-height-100vh" style="background-image: url(main/assets/img-temp/1600x1060/img1.jpg);"></div>
+
+          <div class="js-slide g-bg-img-hero g-height-100vh" style="background-image: url(/main/assets/img-temp/1600x1060/img2.jpg);"></div>
+        </div>
+
+        <div class="u-bg-overlay__inner g-absolute-centered w-100">
+          <div class="container text-center g-max-width-750">
+            <div class="text-uppercase u-heading-v2-4--bottom u-promo-title g-brd-primary">
+              <h3 class="h3 g-letter-spacing-7 g-font-size-12 g-font-weight-400 g-color-white g-mb-25">Architecture company</h3>
+              <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-3 g-font-size-75 g-color-white mb-0">We are Unify</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Section Content -->
 
 
-    <div>
-      <a href="/#/locations">locations page</a>
+      <!-- Section Content -->
+      <section id="about" class="g-pt-100 g-pb-100--md">
+        <div class="container text-center g-max-width-750 g-mb-70">
+          <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+            <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">What we offer</h3>
+            <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">All for your comfort</h2>
+          </div>
+        </div>
 
-      <router-view></router-view>
-    </div>
-  </div>
+        <div class="container px-0">
+          <!-- Row -->
+          <div class="row no-gutters">
+            <div class="col-md-6 col-lg-3">
+              <div class="g-bg-img-hero" style="background-image: url(/main/assets/img-temp/1024x683/img1.jpg);">
+                <div class="g-theme-bg-blue-dark-v3 g-opacity-1 g-opacity-0_8--hover g-py-50 g-px-15 g-pa-100-30--sm g-transition-0_2 g-transition--ease-in">
+                  <span class="d-block g-line-height-1 g-font-size-30 g-color-primary g-mb-20">
+                    <i class="icon-picture"></i>
+                  </span>
+                  <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Exterior <br> Design</h3>
+                  <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Omom sociis natoque penatibus.</p>
+                  <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                </div>
+              </div>
+            </div>
 
+            <div class="col-md-6 col-lg-3">
+              <div class="g-bg-img-hero" style="background-image: url(/main/assets/img-temp/1024x683/img2.jpg);">
+                <div class="g-theme-bg-blue-dark-v4 g-opacity-1 g-opacity-0_8--hover g-py-50 g-px-15 g-pa-100-30--sm g-transition-0_2 g-transition--ease-in">
+                  <span class="d-block g-line-height-1 g-font-size-30 g-color-primary g-mb-20">
+                    <i class="icon-loop"></i>
+                  </span>
+                  <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Interior <br> Design</h3>
+                  <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Omom sociis natoque penatibus.</p>
+                  <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                </div>
+              </div>
+            </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+            <div class="col-md-6 col-lg-3">
+              <div class="g-bg-img-hero" style="background-image: url(/main/assets/img-temp/1024x683/img3.jpg);">
+                <div class="g-theme-bg-blue-dark-v3 g-opacity-1 g-opacity-0_8--hover g-py-50 g-px-15 g-pa-100-30--sm g-transition-0_2 g-transition--ease-in">
+                  <span class="d-block g-line-height-1 g-font-size-30 g-color-primary g-mb-20">
+                    <i class="icon-note"></i>
+                  </span>
+                  <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Project <br> Documentation</h3>
+                  <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Omom sociis natoque penatibus.</p>
+                  <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+              <div class="g-bg-img-hero" style="background-image: url(/main/assets/img-temp/1024x683/img4.jpg);">
+                <div class="g-theme-bg-blue-dark-v4 g-opacity-1 g-opacity-0_8--hover g-py-50 g-px-15 g-pa-100-30--sm g-transition-0_2 g-transition--ease-in">
+                  <span class="d-block g-line-height-1 g-font-size-30 g-color-primary g-mb-20">
+                    <i class="icon-map"></i>
+                  </span>
+                  <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Choice of <br> Land</h3>
+                  <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Omom sociis natoque penatibus.</p>
+                  <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Row -->
+        </div>
+      </section>
+      <!-- End Section Content -->
+
+<!--     <div id="vue-app">
+
+    
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <a class="navbar-brand" href="/#/">History</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+             <a class="nav-link" href="/#/">Home<span class="sr-only">(current)</span></a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#">Link</a>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Signup
+             </a>
+             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <a class="dropdown-item" href="/#/signup">Signup</a>
+               <a class="dropdown-item" href="/#/login">Login</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="/#/logout">Logout</a>
+             </div>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link disabled" href="#">Disabled</a>
+           </li>
+         </ul>
+         <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+       </div>
+     </nav>
+      
+      <div>
+        <a href="/#/locations">locations page</a>
+         
+        <router-view></router-view>
+      </div>
+    </div> -->
+
+    
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  </body>
 </html>
-
 
 <!-- Home Template -->
 
@@ -76,137 +285,6 @@
     <h1>{{ message }}</h1>
     <a class="btn btn-secondary" href="/#/random">Go to random</a>
     </div>
-  </div>
-</template>
-
-<template id="random-page">
-  <div class="vue-component">
-    <div class="container">
-      <h1>{{ message }}</h1>
-      <a class="btn btn-secondary" href="/#/">Go to home</a>
-    </div>
-  </div>
-</template>
-
-
-<!-- locations template -->
-
-
-<template id="locations-index-page">
-  <div class="vue-component">
-    <div class="container">
-      <div class="row">
-        <div v-for="location in locations" class="col-md-4">
-          <div class="card-mb-5">
-              <img class="card-img-top" v-if="location.image_url" v-bind:src="location.image_url" alt="">
-            <div class="card-body">
-              <h2 class="card-title"> {{ location.name }} </h2>
-              <p class="card-text"> {{ location.year }} </p>
-              <a class="btn btn-primary" v-bind:href="'/#/locations/' + location.id" >More Info</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-
-
-
-<template id="locations-show-page">
-  <div class="vue-component">
-    <div class="container">
-      <h1>{{ location.name }}</h1>
-      <h4>Address: {{ location.address }}</h4>
-      <h4>Year Built: {{ location.year }}</h4>
-      
-      <h4>Location origins: </h4>
-      <!-- <h3>{{ location.location_story }}</h3> -->
-      <img v-if="location.image_url" v-bind:src="location.image_url" alt=""> 
-      <a class="btn btn-warning" v-bind:href="'/#/locations/' + location.id + '/edit'">Edit</a>
-      <a class="btn btn-danger" v-bind:href="'/#/locations/' + location.id + '/delete'">Delete</a>
-    </div>
-  </div>
-</template>
-
-
-<!-- User Locations Templates -->
-<template id="users-locations-index-page">  
-  <div class="vue-component">
-    <div class="container">
-      <div class="row">
-        <div v-for="user_location in user_locations" class="col-md-4">
-          <div class="card-mb-5">
-           <!--  <img class="card-img-top" v-bind:src="user_location.images[0].url" alt=""> -->
-            <div class="card-body">
-              <h2 class="card-title"> {{ user_location.location.name }} </h2>
-              <p class="card-text">{{ user_location.location.year }}</p>
-              <a class="btn btn-primary" v-bind:href="'/#/user_locations/' + user_locations.id" >More Info</a>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-
-
-
-<!-- Authorization Template  -->
-
-
-<template id="signup-page">
-  <div class="vue-component">
-
-    <div class="container">
-      <h1>Signup</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="name">
-      </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <div class="form-group">
-        <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
-  </div>
-</template>
-
-<template id="login-page">
-  <div class="vue-component">
-
-    <div class="container">
-      <h1>Login</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
   </div>
 </template>
 
