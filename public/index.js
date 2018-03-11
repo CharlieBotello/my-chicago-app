@@ -84,6 +84,27 @@ var UserLocationsIndexPage = {
   computed: {}
 };
 
+var UserLocationsShowPage = {
+  template: "#users-locations-show-page",
+  data: function() {
+    return {
+      location: {
+        name: "",
+        year: "",
+        address: "",
+        start_time: "",
+        end_time: ""
+        // location.location_story: "",
+      }
+    }
+  },
+  created: function() {
+    axios.get("user_locations/" + this.$route.params.id )
+      .then(function(response) {
+        this.location = response.data;
+      }.bind(this));
+  }
+};
 
 
 
@@ -172,8 +193,9 @@ var router = new VueRouter({
   { path: "/", component: HomePage },
   { path: "/random", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
-  {path: "/user_locations/:id", component: UserLocationsIndexPage},
+  { path : "/user_locations/", component: UserLocationsIndexPage}
   { path: "/locations/:id", component: LocationsShowPage},
+  {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage},
   { path: '/login', component: LoginPage},
   { path: '/logout', component: LogoutPage}
