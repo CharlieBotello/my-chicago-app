@@ -13,17 +13,18 @@ var HomePage = {
   methods: {},
   computed: {}
 };
-var RandomPage = {
-  template: "#random-page",
-  data: function() {
-    return {
-      message: "This is my Random Page!"
-    };
-  },
-  created: function() {},
-  methods: {},
-  computed: {}
-};
+
+// var RandomPage = {
+//   template: "#random-page",
+//   data: function() {
+//     return {
+//       message: "This is my Random Page!"
+//     };
+//   },
+//   created: function() {},
+//   methods: {},
+//   computed: {}
+// };
 
 
 // // Location components
@@ -45,66 +46,66 @@ var LocationsIndexPage = {
   computed: {}
 };
 
-var LocationsShowPage = {
-  template: "#locations-show-page",
-  data: function() {
-    return {
-      location: {
-        name: "",
-        year: "",
-        address: ""
-        // location.location_story: "",
-      }
-    }
-  },
-  created: function() {
-    axios.get("/locations/" + this.$route.params.id )
-      .then(function(response) {
-        this.location = response.data;
-      }.bind(this));
-  }
-};
+// var LocationsShowPage = {
+//   template: "#locations-show-page",
+//   data: function() {
+//     return {
+//       location: {
+//         name: "",
+//         year: "",
+//         address: ""
+//         // location.location_story: "",
+//       }
+//     }
+//   },
+//   created: function() {
+//     axios.get("/locations/" + this.$route.params.id )
+//       .then(function(response) {
+//         this.location = response.data;
+//       }.bind(this));
+//   }
+// };
 
 // // User Locations component
 
-var UserLocationsIndexPage = {
-  template: "#users-locations-index-page",
-  data: function() {
-    return {
-      user_locations: [],
-    };
-  },
-  created: function() {
-    axios.get("/user_locations")
-    .then(function(response) {
-      this.user_locations = response.data;
-    }.bind(this));
-  },
-  methods: {},
-  computed: {}
-};
+// var UserLocationsIndexPage = {
+//   template: "#users-locations-index-page",
+//   data: function() {
+//     return {
+//       user_locations: [],
+//     };
+//   },
+//   created: function() {
+//     axios.get("/user_locations")
+//     .then(function(response) {
+//       this.user_locations = response.data;
+//     }.bind(this));
+//   },
+//   methods: {},
+//   computed: {}
+// };
 
-var UserLocationsShowPage = {
-  template: "#users-locations-show-page",
-  data: function() {
-    return {
-      location: {
-        name: "",
-        year: "",
-        address: "",
-        start_time: "",
-        end_time: ""
-        // location.location_story: "",
-      }
-    }
-  },
-  created: function() {
-    axios.get("user_locations/" + this.$route.params.id )
-      .then(function(response) {
-        this.location = response.data;
-      }.bind(this));
-  }
-};
+// var UserLocationsShowPage = {
+//   template: "#users-locations-show-page",
+//   data: function() {
+//     return {
+//       location: {
+//         name: "",
+//         year: "",
+//         address: "",
+//         start_time: "",
+//         end_time: ""
+//         // location.location_story: "",
+//       }
+//     }
+//   },
+//   created: function() {
+//     axios.get("user_locations/" + this.$route.params.id )
+//       .then(function(response) {
+//         this.location = response.data;
+//       }.bind(this));
+//   }
+// };
 
 
 
@@ -144,46 +145,46 @@ var SignupPage = {
   }
 };
 
-var LoginPage = {
-  template: "#login-page",
-  data: function() {
-    return {
-      email: "",
-      password: "",
-      errors: []
-    };
-  },
-  methods: {
-    submit: function() {
-      var params = {
-        auth: { email: this.email, password: this.password }
-      };
-      axios
-        .post("/user_token", params)
-        .then(function(response) {
-          axios.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          router.push("/");
-        })
-        .catch(
-          function(error) {
-            this.errors = ["Invalid email or password."];
-            this.email = "";
-            this.password = "";
-          }.bind(this)
-        );
-    }
-  }
-};
+// var LoginPage = {
+//   template: "#login-page",
+//   data: function() {
+//     return {
+//       email: "",
+//       password: "",
+//       errors: []
+//     };
+//   },
+//   methods: {
+//     submit: function() {
+//       var params = {
+//         auth: { email: this.email, password: this.password }
+//       };
+//       axios
+//         .post("/user_token", params)
+//         .then(function(response) {
+//           axios.defaults.headers.common["Authorization"] =
+//             "Bearer " + response.data.jwt;
+//           localStorage.setItem("jwt", response.data.jwt);
+//           router.push("/");
+//         })
+//         .catch(
+//           function(error) {
+//             this.errors = ["Invalid email or password."];
+//             this.email = "";
+//             this.password = "";
+//           }.bind(this)
+//         );
+//     }
+//   }
+// };
 
-var LogoutPage = {
-  created: function() {
-    axios.defaults.headers.common["Authorization"] = undefined;
-    localStorage.removeItem("jwt");
-    router.push("/");
-  }
-};
+// var LogoutPage = {
+//   created: function() {
+//     axios.defaults.headers.common["Authorization"] = undefined;
+//     localStorage.removeItem("jwt");
+//     router.push("/");
+//   }
+// };
 
 
 // routes
@@ -191,14 +192,14 @@ var LogoutPage = {
 var router = new VueRouter({
   routes: [
   { path: "/", component: HomePage },
-  { path: "/random", component: RandomPage},
+  // { path: "/random", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
-  { path : "/user_locations/", component: UserLocationsIndexPage}
-  { path: "/locations/:id", component: LocationsShowPage},
-  {path: "/user_locations/:id", component: UserLocationsShowPage},
-  { path: '/signup', component: SignupPage},
-  { path: '/login', component: LoginPage},
-  { path: '/logout', component: LogoutPage}
+  // { path : "/user_locations/", component: UserLocationsIndexPage},
+  // { path: "/locations/:id", component: LocationsShowPage},
+  // {path: "/user_locations/:id", component: UserLocationsShowPage},
+  { path: '/signup', component: SignupPage}
+  // { path: '/login', component: LoginPage},
+  // { path: '/logout', component: LogoutPage}
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

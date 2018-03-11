@@ -6,6 +6,15 @@ class Location < ApplicationRecord
   def friendly_update
     updated_at.strftime("%b %d, %Y")
   end
+
+  def first_image_url
+    if images.length > 0
+      images[0].image_url
+    else
+      "https://cdn-images-1.medium.com/max/1200/1*eFjpoz8lhNKyd8XcSWv2OA.jpeg"
+    end
+  end
+
   def as_json
     {
       id: self.id,
