@@ -8,6 +8,11 @@ json.year location.year
 
 json.first_image_url location.first_image_url
 
-json.stories do
-  json.array! location.stories, partial: 'stories/story', as: :story
-end
+
+json.stories location.stories
+
+
+
+# json.stories do
+#   json.array! location.stories, partial: 'stories/story', as: :story
+# end

@@ -11,8 +11,29 @@ class Location < ApplicationRecord
     if images.length > 0
       images[0].image_url
     else
-      "https://cdn-images-1.medium.com/max/1200/1*eFjpoz8lhNKyd8XcSWv2OA.jpeg"
+      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
     end
+  end
+
+  def get_stories_origins
+    stories_origins = []
+    stories.each do |story|
+      if story.category == "origins"
+
+        stories_origins << story
+      end
+    end
+    stories_origins
+  end
+
+  def get_stories_chicago
+    stories_chicago = []
+    stories.each do |story|
+      if story.category == "chicago_event"
+        stories_chicago << story
+      end 
+    end
+    stories_chicago
   end
 
   def as_json

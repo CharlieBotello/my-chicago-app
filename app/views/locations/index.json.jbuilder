@@ -6,7 +6,5 @@ json.array! @locations.each do |location|
   json.longitude location.longitude
   json.updated_at location.friendly_update
   json.year location.year
-  if location.images.length > 0
-    json.image_url location.images[0].image_url
-  end
+  json.image_url location.first_image_url
 end

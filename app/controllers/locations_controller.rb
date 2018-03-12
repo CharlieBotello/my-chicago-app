@@ -39,6 +39,7 @@ class LocationsController < ApplicationController
   def show
     input_id = params[:id]
     @location = Location.find_by(id: input_id)
+    puts @location.get_stories_origins.length
     render 'show.json.jbuilder'
   end
   def update

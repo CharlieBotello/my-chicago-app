@@ -372,83 +372,67 @@
       <div class="row no-gutters">
 
         <div v-for="location in locations" class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" v-if="location.first_image_url" src="location.first_image_url" alt="Image Description">
+          <img class="img-fluid w-100" v-if="location.image_url" v-bind:src="location.image_url" alt="Image Description">
+        <a v-bind:href="'/#/locations/'+location.id">
 
+  
           <div class="text-center text-uppercase g-pa-30">
             <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ location.name }}</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Architectural, beautiful Exteriors</h3>
+
+            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">{{ location.year }}</h3>
           </div>
+        </a>
         </div>
 
-        <div class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" src="/main/assets/img-temp/1024x683/img6.jpg" alt="Image Description">
-
-          <div class="text-center text-uppercase g-pa-30">
-            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">Hi Tech</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Modern apartments</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" src="/main/assets/img-temp/1024x683/img7.jpg" alt="Image Description">
-
-          <div class="text-center text-uppercase g-pa-30">
-            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">Business</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Architecture in the business district</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" src="/main/assets/img-temp/1024x683/img8.jpg" alt="Image Description">
-
-          <div class="text-center text-uppercase g-pa-30">
-            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">Business city</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">For large corporations</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" src="/main/assets/img-temp/1024x683/img9.jpg" alt="Image Description">
-
-          <div class="text-center text-uppercase g-pa-30">
-            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">City</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Modern twin houses</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" src="/main/assets/img-temp/1024x683/img10.jpg" alt="Image Description">
-
-          <div class="text-center text-uppercase g-pa-30">
-            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">Business</h4>
-            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Unique architecture</h3>
-          </div>
 
 
         </div>
       </div>
     </div>
   </section>
-  <!-- End Section Content -->
+  </div>
+</template>
 
 
-
-
-<!--     <div class="container">
-      <div class="row">
-        <div v-for="location in locations" class="col-md-4">
-          <div class="card-mb-5">
-              <img class="card-img-top" v-if="location.image_url" v-bind:src="location.image_url" alt="">
-            <div class="card-body">
-              <h2 class="card-title"> {{ location.name }} </h2>
-              <p class="card-text"> {{ location.year }} </p>
-              <a class="btn btn-primary" v-bind:href="'/#/locations/' + location.id" >More Info</a>
-            </div>
-          </div>
+<template id="locations-show-page">
+  <div class="vue-component">
+    <section id="projects" class="g-pt-100 g-pb-100--md">
+      <div class="container text-center g-max-width-750 g-mb-70">
+        <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+          <h2 class="h2 g-letter-spacing-5 g-font-size-30 g-font-weight-400 g-color-primary g-mb-25">{{ location.year }}</h2>
+          <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">{{location.name}}</h2>
         </div>
       </div>
-    </div> -->
+
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+
+          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+            <img class="img-fluid w-100" v-if="location.image_url
+            " v-bind:src="location.image_url" alt="Image Description">
+
+            <div class="text-center text-uppercase g-pa-30">
+              <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ location.name }}</h4>
+
+              <div class="stories">
+                <ul v-for="story_origin in location.stories_origins">
+                  <!-- <li>{{story_origin}}</li> -->
+                  <li>{{story_origin.content}}</li>
+                </ul>
+              </div>
+
+              <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">Architectural, beautiful Exteriors</h3>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    
   </div>
+
 </template>
 
 

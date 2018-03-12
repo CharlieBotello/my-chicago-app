@@ -46,25 +46,29 @@ var LocationsIndexPage = {
   computed: {}
 };
 
-// var LocationsShowPage = {
-//   template: "#locations-show-page",
-//   data: function() {
-//     return {
-//       location: {
-//         name: "",
-//         year: "",
-//         address: ""
-//         // location.location_story: "",
-//       }
-//     }
-//   },
-//   created: function() {
-//     axios.get("/locations/" + this.$route.params.id )
-//       .then(function(response) {
-//         this.location = response.data;
-//       }.bind(this));
-//   }
-// };
+var LocationsShowPage = {
+  template: "#locations-show-page",
+  data: function() {
+    return {
+      location: {
+        name: "",
+        year: "",
+        address: "",
+        stories:[]
+        // location.location_story: "",
+      }
+    }
+  },
+  created: function() {
+    axios.get("/locations/" + this.$route.params.id )
+      .then(function(response) {
+        console.log("shomething")
+        this.location = response.data;
+        console.log(this.location)
+      }.bind(this));
+  }
+};
+
 
 // // User Locations component
 
@@ -195,7 +199,7 @@ var router = new VueRouter({
   // { path: "/random", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
   // { path : "/user_locations/", component: UserLocationsIndexPage},
-  // { path: "/locations/:id", component: LocationsShowPage},
+  { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage}
   // { path: '/login', component: LoginPage},
