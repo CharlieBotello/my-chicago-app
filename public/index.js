@@ -27,6 +27,46 @@ var HomePage = {
 // };
 
 
+// Images component
+var ImagesPage = {
+  template: "#load-images-page",
+  data: function() {
+    return {
+      location_id: 0
+    };
+  },
+  created: function() {},
+
+  methods: {
+    uploadFile: function(event) {
+      if (event.target.files.length > 0) {
+        var formData = new FormData();
+        formData.append("location_id", this.location_id);
+        // formData.append("image_url", this.image_url);
+        // formData.append("image_url_file_name", this.image_url_file_name);
+        formData.append("image_url_file_name", this.image_url_file_name);
+
+        // formData.append("title", this.title);
+        // formData.append("image_url_content_type", this.image_url_content_type);
+        // formData.append("image_url_content_type", this.image_url_content_type);
+
+
+        formData.append("image_url", event.target.files[0]);
+
+        axios
+          .post("/images", formData)
+          .then(function(response) {
+            console.log(response);
+            // this.title = "";
+            // this.body = "";
+            event.target.value = "";
+          }.bind(this));
+      }
+    }
+  },
+  computed: {}
+
+}
 // // Location components
 
 var LocationsIndexPage = {
@@ -201,9 +241,10 @@ var router = new VueRouter({
   // { path : "/user_locations/", component: UserLocationsIndexPage},
   { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
-  { path: '/signup', component: SignupPage}
+  { path: '/signup', component: SignupPage},
   // { path: '/login', component: LoginPage},
   // { path: '/logout', component: LogoutPage}
+  {path: '/images', component: ImagesPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

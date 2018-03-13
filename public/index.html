@@ -37,6 +37,8 @@
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="index.js" defer></script>
 
+  
+
   </head>
 
   <body>
@@ -372,7 +374,7 @@
       <div class="row no-gutters">
 
         <div v-for="location in locations" class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
-          <img class="img-fluid w-100" v-if="location.image_url" v-bind:src="location.image_url" alt="Image Description">
+          <img style="width:30px" class="img-fluid w-100" v-if="location.image_url" v-bind:src="location.image_url" alt="Image Description">
         <a v-bind:href="'/#/locations/'+location.id">
 
   
@@ -435,7 +437,38 @@
 
 </template>
 
+<template id="load-images-page">  
+  <div class="vue-component">
+    something
+    <div class="row" style="padding: 100px">
+      <h2>Create a new post:</h2>
+      <div>
+        Location ID: <input type="text" name="location_id" v-model="location_id">
+      </div>
 
+
+      <!-- <div>
+        Image URL: <input type="text" name="image_url" v-model="image_url">
+      </div>
+      <div>
+        File Name: <input type="text" name="image_url_file_name" v-model="image_url_file_name">
+      </div>
+
+      <div>
+        Content Type: <input type="text" name="image_url_content_type" v-model="image_url_content_type">
+      </div>
+      <div>
+        File size: <input type="text" name="image_url_content_type" v-model="image_url_content_type">
+      </div>  --> 
+
+      <div>
+        Image: <input type="file" v-on:change="uploadFile($event)">
+      </div>
+
+    </div>
+
+  </div>
+</template>
 
 
 <!-- Authorization Template  -->
