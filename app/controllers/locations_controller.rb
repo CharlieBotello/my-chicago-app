@@ -1,14 +1,17 @@
 class LocationsController < ApplicationController
     before_action :authenticate_user, only: [:create, :update, :destroy]
   def index
-    @locations = Location.all
-    search_term = params[:search]
-    if search_term
-      @locations = @locations.where("name iLIKE ?",
-                                  "%#{search_term}%"
+    @locations = Location.all[0..19]
+    search_name = params[:search_name]
+    search_year = params[:search_year]
+
+    if search_name || search_year
+      @locations = @locations.where("name iLIKE ? and year iLike ?",
+                                  "%#{search_name}%",
+                                  "%#{search_year}%"
                                   )
-    else
     end
+
     sort_attribute = params[:sort]
     if sort_attribute
       @locations = @locations.order(sort_attribute)

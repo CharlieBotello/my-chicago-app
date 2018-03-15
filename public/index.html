@@ -29,9 +29,11 @@
 
   <!-- CSS Template -->
   <link rel="stylesheet" href="/main/assets/css/styles.op-architecture.css">
+  <link rel="stylesheet" href="/chicago.css">
 
   <!-- CSS Customization -->
   <link rel="stylesheet" href="/main/assets/css/custom.css">
+
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
@@ -42,149 +44,102 @@
   </head>
 
   <body>
-    <main id="vue-app">
-            <!-- Header v1 -->
-    
-      <header id="js-header" class="u-header u-header--sticky-top u-header--change-appearance"
-              data-header-fix-moment="100">
-        <div class="dark-theme u-header__section g-bg-black-opacity-0_4 g-transition-0_3 g-py-8 g-py-17--md"
-             data-header-fix-moment-exclude="dark-theme g-bg-black-opacity-0_4 g-py-17--md"
-             data-header-fix-moment-classes="light-theme u-theme-shadow-v1 g-bg-white g-py-10--md">
-          <nav class="navbar navbar-expand-lg p-0 g-px-15">
-            <div class="container g-pos-rel">
-              <a href="/" class="g-hidden-lg-up navbar-brand mr-0">
-                <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
-                     data-header-fix-moment-exclude="d-block"
-                     data-header-fix-moment-classes="d-none">
-
-                <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
-                     data-header-fix-moment-exclude="d-none"
-                     data-header-fix-moment-classes="d-block">
-              </a>
-              <!-- Navigation -->
-              <div class="collapse navbar-collapse align-items-center flex-sm-row" id="navBar">
-                <ul class="js-scroll-nav navbar-nav align-items-lg-center text-uppercase g-font-weight-700 g-letter-spacing-1 g-font-size-12 g-pt-20 g-pt-0--lg mx-auto"
-                    data-splitted-breakpoint="992">
-                  <li class="nav-item g-mr-30--lg g-mb-7 g-mb-0--lg active">
-                    <a href="/#/" class="nav-link p-0">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="#about" class="nav-link p-0">About</a>
-                  </li>
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="#services" class="nav-link p-0">Locations</a>
-                  </li>
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="#projects" class="nav-link p-0">Stories</a>
-                  </li>
-                  <!-- Logo -->
-                  <li class="g-hidden-lg-down nav-logo-item g-mx-15--lg">
-                    <a href="#" class="js-go-to navbar-brand mr-0"
-                       data-type="static">
-                      <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
-                           data-header-fix-moment-exclude="d-block"
-                           data-header-fix-moment-classes="d-none">
-                      <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
-                           data-header-fix-moment-exclude="d-none"
-                           data-header-fix-moment-classes="d-block">
-                    </a>
-                  </li>
-                  <!-- End Logo -->
-
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="/#/signup" class="nav-link p-0">Signup</a>
-                  </li>
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="#processes" class="nav-link p-0">Login</a>
-                  </li>
-                  <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                    <a href="#awards" class="nav-link p-0">Logout</a>
-                  </li>
-                  <li class="nav-item g-ml-30--lg">
-                    <a href="#contact" class="nav-link p-0">Contact</a>
-                  </li>
-                </ul>    
-              </div>
-              <!-- End Navigation -->
-              <!-- Responsive Toggle Button -->
-              <button class="navbar-toggler btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-15 g-right-0" type="button"
-                      aria-label="Toggle navigation"
-                      aria-expanded="false"
-                      aria-controls="navBar"
-                      data-toggle="collapse"
-                      data-target="#navBar">
-                <span class="hamburger hamburger--slider">
-                  <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                  </span>
-                </span>
-              </button>
-              <!-- End Responsive Toggle Button -->
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!-- End Header v1 -->
-
-      <!-- Section Content -->
-
-          <!-- <router-view></router-view> -->
-      <!-- End Section Content -->
-
-<!--     <div id="vue-app">
-
-    
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <a class="navbar-brand" href="/#/">History</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
-           <li class="nav-item active">
-             <a class="nav-link" href="/#/">Home<span class="sr-only">(current)</span></a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Link</a>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Signup
-             </a>
-             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="/#/signup">Signup</a>
-               <a class="dropdown-item" href="/#/login">Login</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="/#/logout">Logout</a>
-             </div>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link disabled" href="#">Disabled</a>
-           </li>
-         </ul>
-         <form class="form-inline my-2 my-lg-0">
-           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-         </form>
-       </div>
-     </nav>
+    <div id="vue-app">
       
-      <div>
-        <a href="/#/locations">locations page</a>
-         
-        <router-view></router-view>
-      </div>
-    </div> -->
+      <main>
+              <!-- Header v1 -->
+      
+        <header id="js-header" class="u-header u-header--sticky-top u-header--change-appearance"
+                data-header-fix-moment="100">
+          <div class="dark-theme u-header__section g-bg-black-opacity-0_4 g-transition-0_3 g-py-8 g-py-17--md"
+               data-header-fix-moment-exclude="dark-theme g-bg-black-opacity-0_4 g-py-17--md"
+               data-header-fix-moment-classes="light-theme u-theme-shadow-v1 g-bg-white g-py-10--md">
+            <nav class="navbar navbar-expand-lg p-0 g-px-15">
+              <div class="container g-pos-rel">
+                <a href="/" class="g-hidden-lg-up navbar-brand mr-0">
+                  <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
+                       data-header-fix-moment-exclude="d-block"
+                       data-header-fix-moment-classes="d-none">
 
-    
-    <router-view></router-view>
-    </main>
-    
+                  <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
+                       data-header-fix-moment-exclude="d-none"
+                       data-header-fix-moment-classes="d-block">
+                </a>
+                <!-- Navigation -->
+                <div class="collapse navbar-collapse align-items-center flex-sm-row" id="navBar">
+                  <ul class="js-scroll-nav navbar-nav align-items-lg-center text-uppercase g-font-weight-700 g-letter-spacing-1 g-font-size-12 g-pt-20 g-pt-0--lg mx-auto"
+                      data-splitted-breakpoint="992">
+                    <li class="nav-item g-mr-30--lg g-mb-7 g-mb-0--lg active">
+                      <a href="/#/" class="nav-link p-0">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="#about" class="nav-link p-0">About</a>
+                    </li>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="/#/locations" class="nav-link p-0">Locations</a>
+                    </li>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="/#/user_locations" class="nav-link p-0">Day planner</a>
+                    </li>
+                    <!-- Logo -->
+                    <li class="g-hidden-lg-down nav-logo-item g-mx-15--lg">
+                      <a href="#" class="js-go-to navbar-brand mr-0"
+                         data-type="static">
+                        <img class="d-block g-width-140 g-width-160--md" src="/main/assets/img/logo-light.png" alt="Image Description"
+                             data-header-fix-moment-exclude="d-block"
+                             data-header-fix-moment-classes="d-none">
+                        <img class="d-none g-width-140 g-width-160--md" src="/main/assets/img/logo-dark.png" alt="Image Description"
+                             data-header-fix-moment-exclude="d-none"
+                             data-header-fix-moment-classes="d-block">
+                      </a>
+                    </li>
+                    <!-- End Logo -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="/#/signup" class="nav-link p-0">Signup</a>
+                    </li>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="/#/login" class="nav-link p-0">Login</a>
+                    </li>
+                    <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
+                      <a href="#awards" class="nav-link p-0">Logout</a>
+                    </li>
+                    <li class="nav-item g-ml-30--lg">
+                      <a href="#contact" class="nav-link p-0">Contact</a>
+                    </li>
+                  </ul>    
+                </div>
+                <!-- End Navigation -->
+                <!-- Responsive Toggle Button -->
+                <button class="navbar-toggler btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-15 g-right-0" type="button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="navBar"
+                        data-toggle="collapse"
+                        data-target="#navBar">
+                  <span class="hamburger hamburger--slider">
+                    <span class="hamburger-box">
+                      <span class="hamburger-inner"></span>
+                    </span>
+                  </span>
+                </button>
+                <!-- End Responsive Toggle Button -->
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- End Header v1 -->
+
+        <!-- Section Content -->
+      </main>
+
+      <router-view></router-view>
+      
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </div>
   
   </body>
 </html>
@@ -237,7 +192,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>locations </h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Take a dive into the citys's oldest and historically important locations.</p>
-                <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a href="/#/locations" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -362,8 +317,26 @@
 <template id="locations-index-page">
   <div class="vue-component">
   <!-- Section Content -->
+  
   <section id="projects" class="g-pt-100 g-pb-100--md">
-    <div class="container text-center g-max-width-750 g-mb-70">
+    <div style="padding: 50px">
+
+      
+    Search by Name: <input v-model="searchName" list="names">
+
+        <datalist v-model="searchName" id="names">
+          <option v-for="location in locations">{{ location.name }}</option>
+        </datalist>
+          
+    Search by year: <input v-model="searchYear" list="year">
+        <datalist id ="year">
+          <option v-for="location in locations">{{ location.year }}</option>
+        </datalist>
+        <button v-on:click="go()">Go</button>
+
+    </div>
+
+    <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
       <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
         <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Locations</h3>
         <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">Avaiable</h2>
@@ -385,7 +358,6 @@
           </div>
         </a>
         </div>
-
 
 
         </div>
@@ -434,9 +406,9 @@
 
     
   </div>
-
 </template>
 
+<!-- IMAGES PAGE -->
 <template id="load-images-page">  
   <div class="vue-component">
     something
@@ -471,39 +443,172 @@
 </template>
 
 
-<!-- Authorization Template  -->
+
+<!-- User Locations Page -->
+
+    <!-- Timeline -->
+    
+
+<template id="users-locations-index-page">  
+  <div class="vue-component">
+    <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
+      <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Day planner</h3>
+        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0"></h2>
+      </div>
+    </div>
+    
 
 
-<!-- <template id="signup-page">
-  
+
+    <div class="container">
+      <div class="row">
+        <div v-for="user_location in user_locations" class="col-md-4">
+          <div class="card-mb-5">
+<!--             <img class="card-img-top" v-bind:src="user_location.images[0].url" alt=""> -->
+            <div class="card-body">
+              <h2 class="card-title"> {{ user_location.user_id }} </h2>
+              <p class="card-text">{{ user_location.location_id  }}</p>
+              <h2 class=""></h2>
+              <a style="color:black" class="btn btn-primary" v-bind:href="'/#/locations/' + user_location.location.id" >More Info</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+        
 
 
+
+
+<template id="users-locations-new-page">
   <div class="vue-component">
 
     <div class="container">
-      <h1>Signup</h1>
+      <h1>Add location to day planner</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
       <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="name">
+        <label>User Id: </label>
+        <input type="text" class="form-control" v-model="userId">
+        <label>Location id: </label> 
+        <input type="text" class="form-control" v-model="locationId">
       </div>
       <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
+        <label>Start Time:</label>
+        <input type="text" class="form-control" v-model="startTime">
       </div>
       <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
+        <label>End Time:</label>
+        <input type="text" class="form-control" v-model="endTime">
+      </div>
+
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
+
+<template id="users-locations-edit-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Update Day planner</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Start Time:</label>
+        <input type="text" class="form-control" v-model="startTime">
       </div>
       <div class="form-group">
-        <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation">
+        <label>End Time:</label>
+        <input type="text" class="form-control" v-model="imageUrl">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
 
   </div>
 </template>
- -->
+
+
+
+
+<!-- Authorization Template  -->
+
+
+<template id="signup-page">
+  <div class="vue-component">
+    <div style="padding: 130px">  
+      <div class="container text-center g-max-width-750 g-mb-70">
+        <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+          <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Create an Account</h3>
+          <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">SIGNUP</h2>
+        </div>
+      </div>
+    <!-- </div> -->
+
+
+
+      <!-- <div class="container text"> -->
+        <div class="container">
+
+
+          <ul>
+            <li class="text-danger" v-for="error in errors">{{ error }}</li>
+          </ul>
+          <div class="col-sm-10 form-group g-mb-30">
+            <label>Name:</label> 
+            <input type="text" placeholder="Ex. John Smith" class="form-control" v-model="name">
+          </div>
+          <div class="col-sm-10 form-group g-mb-30">
+            <label>Email:</label>
+            <input type="email" placeholder="Ex. jsmith@gmail.com" class="form-control" v-model="email">
+          </div>
+          <div class="col-sm-10 form-group g-mb-30">
+            <label>Password:</label>
+            <input type="password" placeholder="Must be at least 6 characters long" class="form-control" v-model="password">
+          </div>
+          <div class="col-sm-10 form-group g-mb-30">
+            <label>Password confirmation:</label>
+            <input type="password" placeholder="Retype your password" class="form-control" v-model="passwordConfirmation">
+          </div>
+          <div class="text-center">  
+          <button class="btn u-btn-primary btn-md text-uppercase g-line-height-1 g-font-weight-700 g-font-size-11 rounded-0 g-py-12 g-px-25 mb-0" v-on:click="submit()">Submit</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="login-page">
+  <div class="vue-component">
+    <div style="padding: 200px" class="container">
+      <div class="container text-center g-max-width-750 g-mb-70">
+        
+        <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+          <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
+          <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">LOGIN</h2>
+        </div>
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <div class="col-sm-20 form-group g-mb-30">
+          <label>Email:</label>
+          <input type="email" placeholder="Email" class="form-control" v-model="email">
+        </div>
+        <div class="col-sm-20 form-group g-mb-30">
+          <label>Password:</label>
+          <input type="password" placeholder="Passworn" class="form-control" v-model="password">
+        </div>
+        <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+

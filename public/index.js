@@ -74,15 +74,29 @@ var LocationsIndexPage = {
   data: function() {
     return {
       locations: [],
+      searchName: "",
+      searchYear: ""
     };
   },
   created: function() {
     axios.get("/locations")
     .then(function(response) {
+
       this.locations = response.data;
+
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    go: function() {
+
+      axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
+
+         this.locations = response.data; 
+
+      }.bind(this));
+
+    }
+  },
   computed: {}
 };
 
@@ -104,7 +118,7 @@ var LocationsShowPage = {
       .then(function(response) {
         console.log("shomething")
         this.location = response.data;
-        console.log(this.location)
+        console.log(this.location);
       }.bind(this));
   }
 };
@@ -112,22 +126,23 @@ var LocationsShowPage = {
 
 // // User Locations component
 
-// var UserLocationsIndexPage = {
-//   template: "#users-locations-index-page",
-//   data: function() {
-//     return {
-//       user_locations: [],
-//     };
-//   },
-//   created: function() {
-//     axios.get("/user_locations")
-//     .then(function(response) {
-//       this.user_locations = response.data;
-//     }.bind(this));
-//   },
-//   methods: {},
-//   computed: {}
-// };
+var UserLocationsIndexPage = {
+  template: "#users-locations-index-page",
+  data: function() {
+    return {
+      user_locations: [],
+    };
+  },
+  created: function() {
+    axios.get("/user_locations")
+    .then(function(response) {
+      this.user_locations = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 
 // var UserLocationsShowPage = {
 //   template: "#users-locations-show-page",
@@ -151,7 +166,45 @@ var LocationsShowPage = {
 //   }
 // };
 
+var UserLocationsNewPage = {
+  template: "#users-locations-new-page",
+  data: function() {
+    return {
+      userId: "",
+      locationId: "",
+      startTime: "",
+      endTime: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        user_id: this.userId,
+        location_id: this.locationId,
+        start_time: this.startTime,
+        end_time: this.endTime
 
+      };
+      axios
+        .post("/user_locations", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            if (error.response.status === 401){
+              router.push("/login");
+            } else if (error.response.status === 422) {
+              this.errors = error.response.data.errors;
+            } else {
+              router.push("/");
+            }
+          }.bind(this)
+        );
+    }
+  }
+};
 
 
 // // Authorization component
@@ -189,38 +242,38 @@ var SignupPage = {
   }
 };
 
-// var LoginPage = {
-//   template: "#login-page",
-//   data: function() {
-//     return {
-//       email: "",
-//       password: "",
-//       errors: []
-//     };
-//   },
-//   methods: {
-//     submit: function() {
-//       var params = {
-//         auth: { email: this.email, password: this.password }
-//       };
-//       axios
-//         .post("/user_token", params)
-//         .then(function(response) {
-//           axios.defaults.headers.common["Authorization"] =
-//             "Bearer " + response.data.jwt;
-//           localStorage.setItem("jwt", response.data.jwt);
-//           router.push("/");
-//         })
-//         .catch(
-//           function(error) {
-//             this.errors = ["Invalid email or password."];
-//             this.email = "";
-//             this.password = "";
-//           }.bind(this)
-//         );
-//     }
-//   }
-// };
+var LoginPage = {
+  template: "#login-page",
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        auth: { email: this.email, password: this.password }
+      };
+      axios
+        .post("/user_token", params)
+        .then(function(response) {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = ["Invalid email or password."];
+            this.email = "";
+            this.password = "";
+          }.bind(this)
+        );
+    }
+  }
+};
 
 // var LogoutPage = {
 //   created: function() {
@@ -238,11 +291,12 @@ var router = new VueRouter({
   { path: "/", component: HomePage },
   // { path: "/random", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
-  // { path : "/user_locations/", component: UserLocationsIndexPage},
+  { path : "/user_locations/", component: UserLocationsIndexPage},
+  { path: "/user_locations/new", component: UserLocationsNewPage},
   { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage},
-  // { path: '/login', component: LoginPage},
+  { path: '/login', component: LoginPage},
   // { path: '/logout', component: LogoutPage}
   {path: '/images', component: ImagesPage }
   ],

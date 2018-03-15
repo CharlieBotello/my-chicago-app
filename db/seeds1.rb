@@ -1,8 +1,4 @@
 
-User.create!([
-  {name: "Alex ", email: "alex@gmail.com", password_digest: "$2a$10$3/UZMqA/yITb3wVvTdK.sO0REf3gmflHpVdMh9tszusogjVrIgPVm", admin: false}
-])
-
 Location.create!([
   {name: "Charles Turzak House", address: "7059 N Olcott Av", latitude: "42.0095630785", longitude: "-87.8132519358", year: "1938-39"},
   {name: "Lion House - Lincoln Park Zoo", address: "2132 N Stockton Dr", latitude: "41.92133817", longitude: "-87.6333359813", year: "1912"},
@@ -379,3 +375,6 @@ LocationStory.create!([
 
 ])
 
+User.create!([
+  {name: "Alex ", email: "alex@gmail.com", password_digest: "$2a$10$3/UZMqA/yITb3wVvTdK.sO0REf3gmflHpVdMh9tszusogjVrIgPVm", admin: false}
+])

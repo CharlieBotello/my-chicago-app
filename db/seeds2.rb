@@ -1,8 +1,14 @@
-
-User.create!([
-  {name: "Alex ", email: "alex@gmail.com", password_digest: "$2a$10$3/UZMqA/yITb3wVvTdK.sO0REf3gmflHpVdMh9tszusogjVrIgPVm", admin: false}
-])
-
+# Image.create!([
+#   {location_id: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Turzak_House_2.JPG/1200px-Turzak_House_2.JPG", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 2, image_url: "http://landmarkhunter.com/photos/52/44/524402-L.jpg", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 3, image_url: "https://s3.amazonaws.com/architecture-org/files/modules/333nmichigan-ericallixrogers-9.jpg", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 4, image_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Charles_N._Loucks_House_%289160572215%29.jpg", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 5, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Chicago-lighthouse.jpg/1200px-Chicago-lighthouse.jpg", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 6, image_url: "https://c1.staticflickr.com/8/7607/27035518042_b28a66430b_b.jpg", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 7, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/LaSalle_Street_Cable_Car_Powerhouse_2.JPG/1200px-LaSalle_Street_Cable_Car_Powerhouse_2.JPG", image_url_file_name: nil, image_url_content_type: nil, image_url_file_size: nil, image_url_updated_at: nil},
+#   {location_id: 8, image_url: nil, image_url_file_name: "header1.jpg", image_url_content_type: "image/jpeg", image_url_file_size: 1091861, image_url_updated_at: "2018-03-13 03:44:14"},
+#   {location_id: 9, image_url: nil, image_url_file_name: "Rosehill_Cemetery_Entrance.jpeg", image_url_content_type: "image/jpeg", image_url_file_size: 8507, image_url_updated_at: "2018-03-13 03:56:56"}
+# ])
 Location.create!([
   {name: "Charles Turzak House", address: "7059 N Olcott Av", latitude: "42.0095630785", longitude: "-87.8132519358", year: "1938-39"},
   {name: "Lion House - Lincoln Park Zoo", address: "2132 N Stockton Dr", latitude: "41.92133817", longitude: "-87.6333359813", year: "1912"},
@@ -322,14 +328,28 @@ Location.create!([
   {name: "Jessie and William Adams House", address: "9326 S Pleasant Av", latitude: "41.7239969488", longitude: "-87.6701901472", year: "1901"},
   {name: "Old Chicago Coast Guard Station", address: "250 North Breakwater Access", latitude: "41.8876407491", longitude: "-87.6101975521", year: nil}
 ])
-Image.create!([
-  {location_id: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Turzak_House_2.JPG/1200px-Turzak_House_2.JPG"},
-  {location_id: 2, image_url: "http://landmarkhunter.com/photos/52/44/524402-L.jpg"},
-  {location_id: 3, image_url: "https://s3.amazonaws.com/architecture-org/files/modules/333nmichigan-ericallixrogers-9.jpg"},
-  {location_id: 4, image_url: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Charles_N._Loucks_House_%289160572215%29.jpg"},
-  {location_id: 5, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Chicago-lighthouse.jpg/1200px-Chicago-lighthouse.jpg"},
-  {location_id: 6, image_url: "https://c1.staticflickr.com/8/7607/27035518042_b28a66430b_b.jpg"},
-  {location_id: 7, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/LaSalle_Street_Cable_Car_Powerhouse_2.JPG/1200px-LaSalle_Street_Cable_Car_Powerhouse_2.JPG"}
+LocationStory.create!([
+  {location_id: 1, story_id: 1, source: nil},
+  {location_id: 2, story_id: 2, source: nil},
+  {location_id: 3, story_id: 3, source: nil},
+  {location_id: 4, story_id: 4, source: nil},
+  {location_id: 5, story_id: 5, source: nil},
+  {location_id: 6, story_id: 6, source: nil},
+  {location_id: 7, story_id: 7, source: nil},
+  {location_id: 1, story_id: 8, source: nil},
+  {location_id: 2, story_id: 9, source: nil},
+  {location_id: 3, story_id: 10, source: nil},
+  {location_id: 4, story_id: 11, source: nil},
+  {location_id: 5, story_id: 12, source: nil},
+  {location_id: 6, story_id: 13, source: nil},
+  {location_id: 7, story_id: 14, source: nil},
+  {location_id: 1, story_id: 15, source: nil},
+  {location_id: 2, story_id: 16, source: nil},
+  {location_id: 3, story_id: 17, source: nil},
+  {location_id: 4, story_id: 18, source: nil},
+  {location_id: 5, story_id: 19, source: nil},
+  {location_id: 6, story_id: 20, source: nil},
+  {location_id: 7, story_id: 21, source: nil}
 ])
 Story.create!([
   {category: "origins", content: "This design, which represents one of the earliest works by internationally recognized architect Bruce Goff, stands in pronounced contrast to traditional residences of the period. Designed as the home and studio for artist Charles Turzak and his family, it incorporated many features that did not typically appear in residential architecture until more than a decade later, including a carport, corner picture windows, and overhanging balconies. Goff also designed the Bachman House, another Chicago Landmark.", title: "Charles Turzak House"},
@@ -354,28 +374,6 @@ Story.create!([
   {category: "world_event", content: "On July 29, 1909, the newly formed General Motors Corporation (GM) acquires the country’s leading luxury automaker, the Cadillac Automobile Company, for $4.5 million.\n\nCadillac was founded out of the ruins of automotive pioneer Henry Ford’s second failed company (his third effort, the Ford Motor Company, finally succeeded). When the shareholders of the defunct Henry Ford Company called in Detroit machinist Henry Leland to assess the company’s assets for their planned sale, Leland convinced them to stay in business. His idea was to combine Ford’s latest chassis (frame) with a single-cylinder engine developed by Oldsmobile, another early automaker. To that end, the Cadillac Car Company (named for the French explorer Antoine Laumet de La Mothe Cadillac, who founded the city of Detroit in 1701) was founded in August 1902. Leland introduced the first Cadillac–priced at $850–at the New York Auto Show the following year.\n\nIn its first year of production, Cadillac put out nearly 2500 cars, a huge number at the time. Leland, who was reportedly motivated by an intense competition with Henry Ford, assumed full leadership of Cadillac in 1904, and with his son Wilfred by his side he firmly established the brand’s reputation for quality. Among the excellent luxury cars being produced in America at the time–including Packard, Lozier, McFarland and Pierce-Arrow–Cadillac led the field, making the top 10 in overall U.S. auto sales every year from 1904 to 1915.\n\nBy 1909, William C. Durant had assembled Buick and Oldsmobile as cornerstones of his new General Motors Corporation, founded the year before. By the end of July, he had persuaded Wilfred Leland to sell Cadillac for $4.5 million in GM stock. Durant kept the Lelands on in their management position, however, giving them full responsibility for automotive production. Three years later, Cadillac introduced the world’s first successful electric self-starter, developed by Charles F. Kettering; its pioneering V-8 engine was installed in all Cadillac models in 1915.\n\nOver the years, Cadillac maintained its reputation for luxury and innovation: In 1954, for example, it was the first automaker to provide power steering and automatic windshield washers as standard equipment on all its vehicles. Though the brand was knocked out of its top-of-the-market position in the 1980s by the German luxury automaker Mercedes-Benz, it sought to reestablish itself during the following decades, and remains a leader in the luxury car market.", title: "1909"},
   {category: "world_event", content: "On this day in 1887, President Grover Cleveland signs the Dawes Severalty Act into law. The act split up reservations held communally by Native American tribes into smaller units and distributed these units to individuals within the tribe. Also called the General Allotment Act, the law changed the legal status of Native Americans from tribal members to individuals subject to federal laws and dissolved many tribal affiliations The Dawes Severalty/General Allotment Act constituted a huge blow to tribal sovereignty.\n\nCleveland’s goal was to encourage Native Americans to integrate into American agrarian culture. Cleveland, who once said though the people support the government; the government should not support the people, led a socially reformist yet financially conservative government that did not believe in welfare handouts. He signed the act in a sincere but misguided attempt to improve the Native Americans’ lives by incorporating them into white culture, rejecting earlier policies toward Native Americans that forced them to live on desolate reservations where it was difficult to make a living. However, his support of the Dawes Severalty Act actually did more damage than good.\n\nUnder the Dawes Act, the head of each Native American family received 160 acres in an effort to encourage Native Americans to take up farming, live in smaller family units that were considered more American and renounce tribal loyalties. The government held such lands in trust for 25 years, until the recipients could prove themselves self-sufficient farmers. Before the family could sell their allotment, they were required to get a certificate of competency. If the family did not succeed at farming, the land reverted back to the federal government for sale, usually to white settlers. The Dawes Act reduced Native American landholdings from 138 million acres in 1887 to 78 million in 1900 and continued the trend of white settlement on previously Native American-held land. In addition, the law created federally funded boarding schools designed to assimilate Native American children into white society. Family and cultural ties were practically destroyed by the now-notorious boarding schools, in which children were punished for speaking their native language or performing native rituals.\n\nThe Dawes Severalty Act was finally abolished in 1934, during President Franklin Roosevelt’s first term.", title: "1887"}
 ])
-LocationStory.create!([
-  {location_id: 1, story_id: 1, source: nil},
-  {location_id: 2, story_id: 2, source: nil},
-  {location_id: 3, story_id: 3, source: nil},
-  {location_id: 4, story_id: 4, source: nil},
-  {location_id: 5, story_id: 5, source: nil},
-  {location_id: 6, story_id: 6, source: nil},
-  {location_id: 7, story_id: 7, source: nil},
-  {location_id: 1, story_id: 8, source: nil},
-  {location_id: 2, story_id: 9, source: nil},
-  {location_id: 3, story_id: 10, source: nil},
-  {location_id: 4, story_id: 11, source: nil},
-  {location_id: 5, story_id: 12, source: nil},
-  {location_id: 6, story_id: 13, source: nil},
-  {location_id: 7, story_id: 14, source: nil},
-  {location_id: 1, story_id: 15, source: nil},
-  {location_id: 2, story_id: 16, source: nil},
-  {location_id: 3, story_id: 17, source: nil},
-  {location_id: 4, story_id: 18, source: nil},
-  {location_id: 5, story_id: 19, source: nil},
-  {location_id: 6, story_id: 20, source: nil},
-  {location_id: 7, story_id: 21, source: nil},
-
+User.create!([
+  {name: "Alex ", email: "alex@gmail.com", password_digest: "$2a$10$3/UZMqA/yITb3wVvTdK.sO0REf3gmflHpVdMh9tszusogjVrIgPVm", admin: false}
 ])
-
