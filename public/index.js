@@ -137,6 +137,7 @@ var UserLocationsIndexPage = {
     axios.get("/user_locations")
     .then(function(response) {
       this.user_locations = response.data;
+      // console.log(this.user_locations);
     }.bind(this));
   },
   methods: {},

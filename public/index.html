@@ -450,34 +450,80 @@
     
 
 <template id="users-locations-index-page">  
-  <div class="vue-component">
-    <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
-      <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
-        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Day planner</h3>
-        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0"></h2>
-      </div>
-    </div>
-    
+  <section id="services" class="g-theme-bg-blue-dark-v1 g-py-100">
 
+      
 
-
-    <div class="container">
-      <div class="row">
-        <div v-for="user_location in user_locations" class="col-md-4">
-          <div class="card-mb-5">
-<!--             <img class="card-img-top" v-bind:src="user_location.images[0].url" alt=""> -->
-            <div class="card-body">
-              <h2 class="card-title"> {{ user_location.user_id }} </h2>
-              <p class="card-text">{{ user_location.location_id  }}</p>
-              <h2 class=""></h2>
-              <a style="color:black" class="btn btn-primary" v-bind:href="'/#/locations/' + user_location.location.id" >More Info</a>
-            </div>
+    <div class="vue-component">
+      <div v-for="user_location in user_locations">
+        <div class="container text-center g-max-width-750 g-mb-70">
+            
+          <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
+            <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
+            <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md g-color-white mb-0">Day Planner</h2>
           </div>
-          
+          <p class="g-color-white-opacity-0_5 mb-0"></p>
+        </div>
+
+        <div class="container">
+            <!-- Carousel -->
+            <div class="js-carousel"
+                 data-infinite="true"
+                 data-arrows-classes="u-arrow-v1 g-pos-abs g-top-35x g-width-45 g-height-45 g-color-white g-theme-bg-blue-dark-v2 g-bg-primary--hover g-rounded-50x g-transition-0_2 g-transition--ease-in"
+                 data-arrow-left-classes="fa fa-chevron-left g-left-0"
+                 data-arrow-right-classes="fa fa-chevron-right g-right-0">
+
+              <div style="padding: 50px" class="js-slide">
+                <div class="container text-center g-max-width-600 g-mb-30">
+                  <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{ user_location.location_id}}</h4>
+                  <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
+                </div>
+
+                <div class="container text-center g-max-width-550">
+
+                  <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+                  <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
+                </div>
+              </div>
+
+              <div style="padding: 50px" class="js-slide">
+                <div class="container text-center g-max-width-600 g-mb-30">
+                  <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{ user_location.location_id}}</h4>
+                  <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
+                </div>
+
+                <div class="container text-center g-max-width-550">
+                  <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+                  <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">View location</a>
+                </div>
+              </div>
+
+              <div class="js-slide">
+                <div class="container text-center g-max-width-600 g-mb-30">
+                  <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
+                </div>
+
+                <div class="container text-center g-max-width-550">
+                  <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">Etiam sit amet orci eget</h4>
+                  <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+                  <a v-bind:href="'/#/locations/' + user_location.location_id" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
+                </div>
+              </div>
+            </div>
+            <!-- End Carousel -->
+
+
+             
+    <!--             <img class="card-img-top" v-bind:src="user_location.images[0].url" alt=""> -->
+
+                 <!--  <a style="color:black" class="btn btn-primary" v-bind:href="'/#/locations/' + user_location.location_id" >More Info</a> -->
+
+              
+
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
         
 
