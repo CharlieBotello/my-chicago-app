@@ -9,8 +9,8 @@ class UserLocationsController < ApplicationController
     @user_location = UserLocation.new(
                                     user_id: current_user.id,
                                     location_id: params[:location_id],
-                                    start_time: params[:start_time],
-                                    end_time: params[:end_time]
+                                    start_time: params[:start_time].to_datetime,
+                                    end_time: params[:end_time].to_datetime
                                     )
     if @user_location.save
       render 'show.json.jbuilder'

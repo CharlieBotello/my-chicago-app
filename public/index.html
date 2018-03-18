@@ -33,6 +33,7 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="/main/assets/css/custom.css">
+    <link rel="stylesheet" href="bootstrap-datetimepicker.css">
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
@@ -189,6 +190,14 @@
 
       <!-- JS Customization -->
       <script src="main/assets/js/custom.js"></script>
+
+      <script src="bootstrap-datetimepicker.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $(".form_datetime").datetimepicker();
+        });
+      </script>
 
   </body>
 
@@ -432,9 +441,78 @@
           <h2 class="h2 g-letter-spacing-5 g-font-size-30 g-font-weight-400 g-color-primary g-mb-25">{{ location.year }}</h2>
           <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">{{location.name}}</h2>
         </div>
- 
-        <a class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" type="button"  href="/#/user_locations/new" >Add to Day Planner </a>
-      </div>
+
+        <!-- Modal begin -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Add to Day planner
+          </button>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ location.name }}</h5>
+                <button type="button" class="close" 
+                data-dismiss="modal" aria-label="Close" >
+                  <span aria-hidden="true">&times;</span>
+                </button  >
+              </div>
+              <div class="modal-body">
+                
+              <div class="container">
+                <h1>Add location to day planner</h1>
+                <ul>
+                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                </ul>
+                            <div class="form-group">
+                                <label for="dtp_input1" class="col-md-2 control-label">DateTime Picking</label>
+                                <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                    <input class="form-control" size="16" type="text" value="" readonly>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                        <input type="hidden" id="dtp_input1" value="" /><br/>
+                            </div>
+
+
+
+
+
+
+
+                <div class="form-group">
+                  <label>Start Time:</label>
+                  <input type="text" class="form-control" v-model="startTime">
+                </div>
+                <div class="form-group">
+                  <label>End Time:</label>
+                  <input type="text" class="form-control" v-model="endTime">
+                </div>
+
+              </div>
+
+
+
+              </div>
+              
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" v-on:click="submit()">Submit</button>
+              <!--   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal end  -->
+
+
+
+
+
+     <!--    <a class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" type="button"  href="/#/user_locations/new" >Add to Day Planner </a> -->
+      
 
       <div class="container-fluid px-0">
         <div class="row no-gutters">
@@ -503,6 +581,9 @@
             
           </div>  
         </div>
+
+
+
     </section>
   </div>
 
@@ -556,75 +637,63 @@
     
     <div class="vue-component">
 
-      <div v-for="uL in user_locations">
-        <div class="location">
-          <h1 >{{uL.location.name}}</h1>
-          <div class="images" v-for="uLI in uL.location_images">
-            <img v-bind:src="uLI.image_url" alt="">
-          </div>
-          <a style="color:black" class="btn btn-primary" v-bind:href="'/#/locations/' + uL.location_id" >go to location</a>
-        </div>
-      </div>
-        <section id="services" class="g-theme-bg-blue-dark-v1 g-py-100">
-          <div v-for="user_location in user_locations">
-            <div class="container text-center g-max-width-750 g-mb-70">
-                
-              <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
-                <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
-                <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md g-color-white mb-0">Day Planner</h2>
-              </div>
-              <p class="g-color-white-opacity-0_5 mb-0"></p>
+
+
+      
+      <section id="services" class="g-theme-bg-blue-dark-v1 g-py-100">
+        <div v-for="uL in user_locations">
+          <div class="container text-center g-max-width-750 g-mb-70">
+              
+            <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
+              <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
+              <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md g-color-white mb-0">Day Planner</h2>
             </div>
+            <p class="g-color-white-opacity-0_5 mb-0"></p>
+          </div>
+      
 
-            <div class="container">
-                Carousel
-                <div class="js-carousel"
-                     data-infinite="true"
-                     data-arrows-classes="u-arrow-v1 g-pos-abs g-top-35x g-width-45 g-height-45 g-color-white g-theme-bg-blue-dark-v2 g-bg-primary--hover g-rounded-50x g-transition-0_2 g-transition--ease-in"
-                     data-arrow-left-classes="fa fa-chevron-left g-left-0"
-                     data-arrow-right-classes="fa fa-chevron-right g-right-0">
+          <div class="container">
+         <!--      Carousel -->
+              <div class="js-carousel"
+                   data-infinite="true"
+                   data-arrows-classes="u-arrow-v1 g-pos-abs g-top-35x g-width-45 g-height-45 g-color-white g-theme-bg-blue-dark-v2 g-bg-primary--hover g-rounded-50x g-transition-0_2 g-transition--ease-in"
+                   data-arrow-left-classes="fa fa-chevron-left g-left-0"
+                   data-arrow-right-classes="fa fa-chevron-right g-right-0">
 
-                  <div style="padding: 50px" class="js-slide">
-                    <div class="container text-center g-max-width-600 g-mb-30">
-                      <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{ user_location.location_id}}</h4>
-                      <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
-                    </div>
+                <div style="padding: 50px" class="js-slide">
+                  <div class="container text-center g-max-width-600 g-mb-30">
+                    <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{uL.location.name}}</h4>
 
-                    <div class="container text-center g-max-width-550">
-
-                      <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
-                      <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
-                    </div>
+                    <img v-for="uLI in uL.location_images" class="img-fluid d-inline-block" v-bind:src="uLI.image_url" alt="Image description">
                   </div>
 
-                  <div style="padding: 50px" class="js-slide">
-                    <div class="container text-center g-max-width-600 g-mb-30">
-                      <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{ user_location.location_id}}</h4>
-                      <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
-                    </div>
+                  <div class="container text-center g-max-width-550">
 
-                    <div class="container text-center g-max-width-550">
-                      <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
-                      <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">View location</a>
-                    </div>
+                    <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40" >Date Time: {{ uL.start_time }}</p>
+
+                    <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
                   </div>
-
-
                 </div>
-                End Carousel
 
+<!--                 <div style="padding: 50px" class="js-slide">
+                  <div class="container text-center g-max-width-600 g-mb-30">
+                    <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{ user_location.location_id}}</h4>
+                    <img class="img-fluid d-inline-block" src="/main/assets/img-temp/597x354/img1.png" alt="Image description">
+                  </div>
 
-                 
-<!--                     <img class="card-img-top" v-bind:src="user_location.images[0].url" alt=""> -->
+                  <div class="container text-center g-max-width-550">
+                    <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40">Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
+                    <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">View location</a>
+                  </div>
+                </div>
+ -->
 
-                      <a style="color:black" class="btn btn-primary" v-bind:href="'/#/locations/' + user_location.location_id" >More Info</a>
 
                   
-
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
     </div>
+  </div>
 
 
 </template>
@@ -645,7 +714,7 @@
         <label>User Id: </label>
         <input type="text" class="form-control" v-model="userId">
         <label>Location id: </label> 
-        <input type="text" class="form-control" v-model="locationId">
+        <input type="text" class="form-control" value="2" v-model="locationId">
       </div>
       <div class="form-group">
         <label>Start Time:</label>

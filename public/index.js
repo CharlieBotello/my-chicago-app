@@ -105,31 +105,55 @@ var LocationsShowPage = {
   template: "#locations-show-page",
   data: function() {
     return {
-      myLocationID:"",
+      startTime: "",
+      endTime: "",
+      // myLocationID:"",
       location: {
         name: "",
         year: "",
         address: "",
         stories:[]
         // location.location_story: "",
-      }
+      },
+      errors: []
     }
   },
   created: function() {
     axios.get("/locations/" + this.$route.params.id )
       .then(function(response) {
-        console.log("shomething")
+        // console.log("shomething")
         this.location = response.data;
         console.log(this.location);
       }.bind(this));
   },
-  methods:{
-    sendLocationId: function(locationId) {
-      this.myLocationID = locationId
-      console.log("doing something")
-      console.log(this.myLocationID)
+  methods: {
+    submit: function() {
+      var params = {
+        // user_id: this.userId,
+        location_id: this.location.id,
+        start_time: this.startTime,
+        end_time: this.endTime
+
+      };
+      axios
+        .post("/user_locations", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            if (error.response.status === 401){
+              router.push("/login");
+            } else if (error.response.status === 422) {
+              this.errors = error.response.data.errors;
+            } else {
+              router.push("/");
+            }
+          }.bind(this)
+        );
     }
-  }
+  },
+  computed: {}
 };
 
 
@@ -176,50 +200,76 @@ var UserLocationsIndexPage = {
 //   }
 // };
 
-var UserLocationsNewPage = {
-  template: "#users-locations-new-page",
-  data: function() {
-    return {
-      userId: "",
-      locationId: "",
-      startTime: "",
-      endTime: "",
-      errors: []
-    };
-  },
+// var UserLocationsNewPage = {
+//   template: "#users-locations-new-page",
+//   data: function() {
+//     return {
+//       userId: "",
+//       locationId: "",
+//       startTime: "",
+//       endTime: "",
+//       errors: []
+//     };
+//   },
 
-  created:function() {
-    console.log(LocationsShowPage.data)
-  },
-  methods: {
-    submit: function() {
-      var params = {
-        user_id: this.userId,
-        location_id: this.locationId,
-        start_time: this.startTime,
-        end_time: this.endTime
+//   created:function() {
+//     console.log(LocationsShowPage.data)
+//   },
+//   methods: {
+//     submit: function() {
+//       var params = {
+//         user_id: this.userId,
+//         location_id: this.locationId,
+//         start_time: this.startTime,
+//         end_time: this.endTime
 
-      };
-      axios
-        .post("/user_locations", params)
-        .then(function(response) {
-          router.push("/");
-        })
-        .catch(
-          function(error) {
-            if (error.response.status === 401){
-              router.push("/login");
-            } else if (error.response.status === 422) {
-              this.errors = error.response.data.errors;
-            } else {
-              router.push("/");
-            }
-          }.bind(this)
-        );
-    }
-  }
-};
+//       };
+//       axios
+//         .post("/user_locations", params)
+//         .then(function(response) {
+//           router.push("/");
+//         })
+//         .catch(
+//           function(error) {
+//             if (error.response.status === 401){
+//               router.push("/login");
+//             } else if (error.response.status === 422) {
+//               this.errors = error.response.data.errors;
+//             } else {
+//               router.push("/");
+//             }
+//           }.bind(this)
+//         );
+//     }
+//   }
+// };
 
+
+
+
+
+
+// var UserLocationsShowPage = {
+//   template: "#users-locations-show-page",
+//   data: function() {
+//     return {
+//       location: {
+//         name: "",
+//         year: "",
+//         address: "",
+//         start_time: "",
+//         end_time: ""
+//         // location.location_story: "",
+//       }
+//     }
+//   },
+//   created: function() {
+//     axios.get("user_locations/" + this.$route.params.id )
+//       .then(function(response) {
+//         this.location = response.data;
+//       }.bind(this));
+//   }
+// };
 
 // // Authorization component
 
@@ -307,7 +357,7 @@ var router = new VueRouter({
   // { path: "/random", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
   { path : "/user_locations/", component: UserLocationsIndexPage},
-  { path: "/user_locations/new", component: UserLocationsNewPage},
+  // { path: "/user_locations/new", component: UserLocationsNewPage},
   { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage},

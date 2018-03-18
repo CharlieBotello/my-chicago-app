@@ -2,10 +2,18 @@ class UserLocation < ApplicationRecord
   belongs_to :user
   belongs_to :location 
   def pretty_start_time
-    self.start_time.strftime("%b %e, %l:%M %p")
+    if start_time
+      self.start_time.strftime("%b %e, %l:%M %p")
+    else
+      start_time
+    end
   end
   def pretty_end_time
-    self.end_time.strftime("%b %e, %l:%M %p")
+    if end_time
+      self.end_time.strftime("%b %e, %l:%M %p")
+    else
+      end_time
+    end
   end
   def as_json
     {
