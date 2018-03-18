@@ -340,13 +340,13 @@ var LoginPage = {
   }
 };
 
-// var LogoutPage = {
-//   created: function() {
-//     axios.defaults.headers.common["Authorization"] = undefined;
-//     localStorage.removeItem("jwt");
-//     router.push("/");
-//   }
-// };
+var LogoutPage = {
+  created: function() {
+    axios.defaults.headers.common["Authorization"] = undefined;
+    localStorage.removeItem("jwt");
+    router.push("/");
+  }
+};
 
 
 // routes
