@@ -13,3 +13,5 @@ json.year @location.year
 json.stories_origins @location.get_stories_origins.as_json
 
 json.stories_chicago @location.get_stories_chicago.as_json
+
+json.stories_world @location.get_stories_world.as_json

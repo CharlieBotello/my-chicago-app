@@ -14,59 +14,48 @@ var HomePage = {
   computed: {}
 };
 
-// var RandomPage = {
-//   template: "#random-page",
-//   data: function() {
-//     return {
-//       message: "This is my Random Page!"
-//     };
-//   },
-//   created: function() {},
-//   methods: {},
-//   computed: {}
-// };
 
 
 // Images component
-var ImagesPage = {
-  template: "#load-images-page",
-  data: function() {
-    return {
-      location_id: 0
-    };
-  },
-  created: function() {},
+// var ImagesPage = {
+//   template: "#load-images-page",
+//   data: function() {
+//     return {
+//       location_id: 0
+//     };
+//   },
+//   created: function() {},
 
-  methods: {
-    uploadFile: function(event) {
-      if (event.target.files.length > 0) {
-        var formData = new FormData();
-        formData.append("location_id", this.location_id);
-        // formData.append("image_url", this.image_url);
-        // formData.append("image_url_file_name", this.image_url_file_name);
-        formData.append("image_url_file_name", this.image_url_file_name);
+//   methods: {
+//     uploadFile: function(event) {
+//       if (event.target.files.length > 0) {
+//         var formData = new FormData();
+//         formData.append("location_id", this.location_id);
+//         // formData.append("image_url", this.image_url);
+//         // formData.append("image_url_file_name", this.image_url_file_name);
+//         formData.append("image_url_file_name", this.image_url_file_name);
 
-        // formData.append("title", this.title);
-        // formData.append("image_url_content_type", this.image_url_content_type);
-        // formData.append("image_url_content_type", this.image_url_content_type);
+//         // formData.append("title", this.title);
+//         // formData.append("image_url_content_type", this.image_url_content_type);
+//         // formData.append("image_url_content_type", this.image_url_content_type);
 
 
-        formData.append("image_url", event.target.files[0]);
+//         formData.append("image_url", event.target.files[0]);
 
-        axios
-          .post("/images", formData)
-          .then(function(response) {
-            console.log(response);
-            // this.title = "";
-            // this.body = "";
-            event.target.value = "";
-          }.bind(this));
-      }
-    }
-  },
-  computed: {}
+//         axios
+//           .post("/images", formData)
+//           .then(function(response) {
+//             console.log(response);
+//             // this.title = "";
+//             // this.body = "";
+//             event.target.value = "";
+//           }.bind(this));
+//       }
+//     }
+//   },
+//   computed: {}
 
-}
+// }
 // // Location components
 
 var LocationsIndexPage = {
@@ -87,6 +76,16 @@ var LocationsIndexPage = {
     }.bind(this));
   },
   methods: {
+    isValid:function(location) {
+      var validName = location.name
+        .toLowerCase()
+        .includes(this.searchName.toLowerCase());
+      var validYear = location.year
+        .toLowerCase()
+        .includes(this.searchYear.toLowerCase());
+      return validName && validYear
+      // return validName 
+    },
     go: function() {
 
       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
@@ -97,13 +96,16 @@ var LocationsIndexPage = {
 
     }
   },
-  computed: {}
+  computed: {
+
+  }
 };
 
 var LocationsShowPage = {
   template: "#locations-show-page",
   data: function() {
     return {
+      myLocationID:"",
       location: {
         name: "",
         year: "",
@@ -120,6 +122,13 @@ var LocationsShowPage = {
         this.location = response.data;
         console.log(this.location);
       }.bind(this));
+  },
+  methods:{
+    sendLocationId: function(locationId) {
+      this.myLocationID = locationId
+      console.log("doing something")
+      console.log(this.myLocationID)
+    }
   }
 };
 
@@ -137,7 +146,7 @@ var UserLocationsIndexPage = {
     axios.get("/user_locations")
     .then(function(response) {
       this.user_locations = response.data;
-      // console.log(this.user_locations);
+      console.log(this.user_locations);
     }.bind(this));
   },
   methods: {},
@@ -177,6 +186,10 @@ var UserLocationsNewPage = {
       endTime: "",
       errors: []
     };
+  },
+
+  created:function() {
+    console.log(LocationsShowPage.data)
   },
   methods: {
     submit: function() {
@@ -232,8 +245,9 @@ var SignupPage = {
       axios
         .post("/users", params)
         .then(function(response) {
-          router.push("/login");
-        })
+          console.log("going to loging")
+          router.push("/");
+        }.bind(this))
         .catch(
           function(error) {
             this.errors = error.response.data.errors;
@@ -297,9 +311,9 @@ var router = new VueRouter({
   { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage},
-  { path: '/login', component: LoginPage},
+  { path: '/login', component: LoginPage }
   // { path: '/logout', component: LogoutPage}
-  {path: '/images', component: ImagesPage }
+  // {path: '/images', component: ImagesPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -309,6 +323,16 @@ var router = new VueRouter({
 var app = new Vue({
   el: "#vue-app",
   router: router,
+
+  // data:function () {
+  //   return{
+  //     myLocationID: "ss"
+  //   }
+    
+  // },
+  // methods:{
+
+  // },
   created: function() {
     var jwt = localStorage.getItem("jwt");
     if (jwt) {

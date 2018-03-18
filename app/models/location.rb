@@ -29,22 +29,31 @@ class Location < ApplicationRecord
   def get_stories_chicago
     stories_chicago = []
     stories.each do |story|
-      if story.category == "chicago_event"
+      if story.category == "chicago"
         stories_chicago << story
       end 
     end
     stories_chicago
   end
 
-  def as_json
-    {
-      id: self.id,
-      name: self.name,
-      address: self.address,
-      latitude: self.latitude,
-      longitude: self.longitude,
-      updated_at: self.friendly_update,
-      year: self.year
-    }
-  end
+  def get_stories_world
+    stories_world = []
+    stories.each do |story|
+      if story.category == "world"
+        stories_world << story
+      end 
+    end 
+    stories_world
+  end 
+  # def as_json
+  #   {
+  #     id: self.id,
+  #     name: self.name,
+  #     address: self.address,
+  #     latitude: self.latitude,
+  #     longitude: self.longitude,
+  #     updated_at: self.friendly_update,
+  #     year: self.year
+  #   }
+  # end
 end
