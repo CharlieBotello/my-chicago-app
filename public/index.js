@@ -117,6 +117,7 @@ var LocationsIndexPage = {
   },
   updated:function() {
     this.initMap();
+
     
   },
   computed: {
@@ -280,6 +281,7 @@ var LocationsShowPage = {
   },
   updated:function() {
     this.initMap(); 
+    
   },
   computed: {}
 };

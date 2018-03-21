@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'twilio-ruby'
+
 class UserLocationsController < ApplicationController
   before_action :authenticate_user
   
@@ -15,10 +18,27 @@ class UserLocationsController < ApplicationController
     if @user_location.save
       render 'show.json.jbuilder'
       # render json: @user_location.as_json
+    account_sid = 'AC0c99424d7f274ba0a6e6c7d432fd5586'
+    auth_token = '86be9485e114facd530d29f2f67cbaf8'
+    client = Twilio::REST::Client.new account_sid, auth_token
+
+    from = '+13462201025' # Your Twilio number
+    to = '+12243107523' # Your mobile phone number
+
+    pretty_start_time = @user_location.start_time.strftime("%e%b%Y")
+    client.messages.create(
+    from: from,
+    to: to,
+    body: "You are scheduled at #{pretty_start_time}!"
+    )
     else
       render json: {errors: @user_location.errors.full_messages}, status: :unprocessable_entity 
     end
+
+
+
   end
+
   def show
     input_id = params[:id]
     @user_location = UserLocation.find_by(id: input_id)
