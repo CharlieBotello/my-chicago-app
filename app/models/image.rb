@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
-  # has_attached_file :image_url, {medium: "300x300>", large: "1200X1200>"}
+  # has_attached_file :image_urls, {medium: "600x400>", large: "1200X1000>"}
     
-  # validates_attachment :image_url,
+  # validates_attachment :image_urls,
   #   content_type: {
   #     content_type: ["image/jpeg", "image/gif", "image/png"]
   #   }

@@ -17,43 +17,44 @@ var HomePage = {
 
 
 // Images component
-// var ImagesPage = {
-//   template: "#load-images-page",
-//   data: function() {
-//     return {
-//       location_id: 0
-//     };
-//   },
-//   created: function() {},
+var ImagesPage = {
+  template: "#load-images-page",
+  data: function() {
+    return {
+      location_id: 0
+    };
+  },
+  created: function() {},
 
-//   methods: {
-//     uploadFile: function(event) {
-//       if (event.target.files.length > 0) {
-//         var formData = new FormData();
-//         formData.append("location_id", this.location_id);
-//         // formData.append("image_url", this.image_url);
-//         // formData.append("image_url_file_name", this.image_url_file_name);
-//         formData.append("image_url_file_name", this.image_url_file_name);
+  methods: {
+    uploadFile: function(event) {
+      if (event.target.files.length > 0) {
+        var formData = new FormData();
+        formData.append("location_id", this.location_id);
+        // formData.append("image_url", this.image_url);
+        // formData.append("image_url_file_name", this.image_url_file_name);
+        formData.append("image_url_file_name", this.image_url_file_name);
 
-//         // formData.append("title", this.title);
-//         // formData.append("image_url_content_type", this.image_url_content_type);
-//         // formData.append("image_url_content_type", this.image_url_content_type);
+        // formData.append("title", this.title);
+        // formData.append("image_url_content_type", this.image_url_content_type);
+        // formData.append("image_url_content_type", this.image_url_content_type);
 
 
-//         formData.append("image_url", event.target.files[0]);
+        formData.append("image_urls", event.target.files[0]);
 
-//         axios
-//           .post("/images", formData)
-//           .then(function(response) {
-//             console.log(response);
-//             // this.title = "";
-//             // this.body = "";
-//             event.target.value = "";
-//           }.bind(this));
-//       }
-//     }
-//   },
-//   computed: {}
+        axios
+          .post("/images", formData)
+          .then(function(response) {
+            console.log(response);
+            // this.title = "";
+            // this.body = "";
+            event.target.value = "";
+          }.bind(this));
+      }
+    }
+  },
+  computed: {}
+};
 
 // }
 // // Location components
@@ -63,8 +64,11 @@ var LocationsIndexPage = {
   data: function() {
     return {
       locations: [],
+      location: this.location,
       searchName: "",
-      searchYear: ""
+      searchYear: "",
+      lt: 20,
+      lg: 30
     };
   },
   created: function() {
@@ -74,8 +78,20 @@ var LocationsIndexPage = {
       this.locations = response.data;
 
     }.bind(this));
+    this.initMap();
   },
   methods: {
+    initMap: function() {
+        var uluru = {lat: this.lt, lng: this.lg};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      },
     isValid:function(location) {
       var validName = location.name
         .toLowerCase()
@@ -87,19 +103,107 @@ var LocationsIndexPage = {
       // return validName 
     },
     go: function() {
-
       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
 
          this.locations = response.data; 
+         this.lt = response.data.latitude;
+         this.lg = response.data.longitude;
+         
+         console.log(this.locations);
 
       }.bind(this));
 
     }
   },
+  updated:function() {
+    this.initMap();
+    
+  },
   computed: {
 
   }
 };
+
+
+
+
+
+
+
+
+// var UserLocationsIndexPage = {
+//   template: "#users-locations-index-page",
+//   name: 'google-map',
+//   props: ['name'],
+
+//   data: function() {
+//     return {
+//       user_locations: [],
+//       location: this.location,
+
+//       mapName: this.name + "-map",
+//       map: null,
+//     };
+//   },
+//   created: function() {
+//     axios.get("/user_locations")
+//     .then(function(response) {
+//       this.user_locations = response.data;
+//       this.location = response.data.latitude + ", " + response.data.longitude;
+//       console.log(this.user_locations);
+//     }.bind(this));
+//   },
+
+
+//   updated: function () {
+//       this.$nextTick(function () {
+
+//       console.log("UGH")
+
+//         geocoder = new google.maps.Geocoder();
+
+//         var latlng = new google.maps.LatLng(39.881832, -84.623177);
+
+//         var mapOptions = {
+//                           zoom: 13,
+//                           center: latlng,
+//                           styles: [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}],
+//                         }
+
+//         map = new google.maps.Map(document.getElementById(this.mapName), mapOptions);
+
+//         var geoAddress = this.location
+
+//         geocoder.geocode( { 'address' : geoAddress}, function(results, status) {
+//               if (status == 'OK') {
+
+//                 map.setCenter(results[0].geometry.location);
+//                 var marker = new google.maps.Marker({
+//                     map: map,
+//                     position: results[0].geometry.location
+//                 });
+//               } else {
+//                 alert('Geocode was not successful for the following reason: ' + status);
+//               }
+//             });
+//       });
+//     },
+
+//   created: function() {
+//     axios.get("/user_locations")
+//     .then(function(response) {
+//       this.user_locations = response.data;
+//       console.log(this.user_locations);
+//     }.bind(this));
+//   },
+//   methods: {},
+//   computed: {}
+// };
+
+
+
+
+
 
 var LocationsShowPage = {
   template: "#locations-show-page",
@@ -112,6 +216,8 @@ var LocationsShowPage = {
         name: "",
         year: "",
         address: "",
+        lt: 0,
+        lg: 0,
         stories:[]
         // location.location_story: "",
       },
@@ -123,10 +229,28 @@ var LocationsShowPage = {
       .then(function(response) {
         // console.log("shomething")
         this.location = response.data;
+        this.lt = parseFloat(response.data.latitude);
+        this.lg = parseFloat(response.data.longitude);
         console.log(this.location);
       }.bind(this));
+      this.initMap();
   },
   methods: {
+    initMap: function() {
+      console.log(this.lt);
+      console.log(this.lg);
+        var uluru = {lat: this.lt, lng: this.lg};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      console.log(uluru);
+      },
+
     submit: function() {
       var params = {
         // user_id: this.userId,
@@ -135,6 +259,7 @@ var LocationsShowPage = {
         end_time: this.endTime
 
       };
+
       axios
         .post("/user_locations", params)
         .then(function(response) {
@@ -153,17 +278,26 @@ var LocationsShowPage = {
         );
     }
   },
+  updated:function() {
+    this.initMap(); 
+  },
   computed: {}
 };
 
 
 // // User Locations component
 
+
+
+
+
+
 var UserLocationsIndexPage = {
   template: "#users-locations-index-page",
   data: function() {
     return {
       user_locations: [],
+      
     };
   },
   created: function() {
@@ -176,6 +310,7 @@ var UserLocationsIndexPage = {
   methods: {},
   computed: {}
 };
+
 
 
 // var UserLocationsShowPage = {

@@ -8,3 +8,8 @@ body .large {
   height: 1000;
 }
 
+#map {
+height: 400px;
+width: 50%;
+}
+

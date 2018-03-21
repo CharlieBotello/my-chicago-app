@@ -16,6 +16,8 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C500%2C600%2C700%2C800%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
 
+
+
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="/main/assets/vendor/bootstrap/bootstrap.min.css">
 
@@ -38,6 +40,13 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
+   <!--  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=
+AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap">
+    </script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap"
+    async defer></script>
+
     <script src="index.js" defer></script>
 
     
@@ -386,6 +395,7 @@
   <section id="projects" class="g-pt-100 g-pb-100--md">
     <div style="padding: 50px">
 
+                 
       
     Search by Name: <input v-model="searchName" list="names">
 
@@ -400,6 +410,9 @@
         <button v-on:click="go()">Go</button>
 
     </div>
+    <!-- <div class="google-map" v-bind:id="mapName"></div> -->
+    <!-- <div class="google-map" id="map"></div> -->
+
 
     <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
       <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
@@ -442,11 +455,14 @@
           <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">{{location.name}}</h2>
         </div>
 
+
+
         <!-- Modal begin -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Add to Day planner
           </button>
         </div>
+        <!-- <div class="google-map" id="map"></div>  -->
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -501,11 +517,6 @@
  -->
 
 
-
-
-
-
-
                 <div class="form-group">
                   <label>Start Time:</label>
                   <input type="text" class="form-control" v-model="startTime">
@@ -542,10 +553,18 @@
       <div class="container-fluid px-0">
         <div class="row no-gutters">
 
-          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+          <div class="col-md-6 col-lg-6 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
             <img class=" large img-fluid w-100" v-if="location.image_url
             " v-bind:src="location.image_url" alt="Image Description">
+          </div>
+          <div class="col-md-6 col-lg-6">
+<!--             <img class=" large img-fluid w-100" v-if="location.image_url
+            " v-bind:src="location.image_url" alt="Image Description"> -->
+            <div class="google-map" id="map"></div> 
 
+          </div> 
+
+          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
             <div v-for="story_origin in location.stories_origins" class="text-center text-uppercase g-pa-30">
               <h3 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ story_origin.category }}</h3>
 
@@ -559,6 +578,7 @@
               <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in"></h3>
             </div>  
           
+
           </div>  
         </div>
       </div>
@@ -618,7 +638,7 @@
 </template>
 
 <!-- IMAGES PAGE -->
-<template id="load-images-page">  
+<!-- <template id="load-images-page">  
   <div class="vue-component">
     something
     <div class="row" style="padding: 100px">
@@ -628,7 +648,7 @@
       </div>
 
 
-      <!-- <div>
+      <div>
         Image URL: <input type="text" name="image_url" v-model="image_url">
       </div>
       <div>
@@ -640,7 +660,7 @@
       </div>
       <div>
         File size: <input type="text" name="image_url_content_type" v-model="image_url_content_type">
-      </div>  --> 
+      </div>  
 
       <div>
         Image: <input type="file" v-on:change="uploadFile($event)">
@@ -650,7 +670,7 @@
 
   </div>
 </template>
-
+ -->
 
 
 <!-- User Locations Page -->
@@ -677,6 +697,7 @@
           </div>
       
 
+
           <div class="container">
          <!--      Carousel -->
               <div class="js-carousel"
@@ -699,6 +720,22 @@
                     <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
                   </div>
                 </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--                 <div style="padding: 50px" class="js-slide">
                   <div class="container text-center g-max-width-600 g-mb-30">
@@ -723,7 +760,6 @@
 
 </template>
         
-
 
 
 
@@ -777,7 +813,6 @@
 
   </div>
 </template>
-
 
 
 
@@ -900,6 +935,23 @@
     </div>
 
 
+  </div>
+</template>
+
+
+
+
+
+
+
+
+
+<template id="random-page">
+  <div class="vue-component">
+    <div class="container">
+      <h1>{{ message }}</h1>
+      <a class="btn btn-secondary" href="/#/">Go to home</a>
+    </div>
   </div>
 </template>
 
