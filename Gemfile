@@ -29,6 +29,7 @@ gem "paperclip", "~> 5.1"
 gem "figaro"
 gem 'geocoder'
 
+gem "datetime_picker_rails", github: "graysonwright/datetime_picker_rails"
 
 gem 'twilio-ruby'
 

@@ -66,9 +66,9 @@ var LocationsIndexPage = {
       locations: [],
       location: this.location,
       searchName: "",
-      searchYear: "",
-      lt: 20,
-      lg: 30
+      searchYear: ""
+      // lt: 20,
+      // lg: 30
     };
   },
   created: function() {
@@ -78,20 +78,20 @@ var LocationsIndexPage = {
       this.locations = response.data;
 
     }.bind(this));
-    this.initMap();
+    // this.initMap();
   },
   methods: {
-    initMap: function() {
-        var uluru = {lat: this.lt, lng: this.lg};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      },
+    // initMap: function() {
+    //     var uluru = {lat: this.lt, lng: this.lg};
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //       zoom: 4,
+    //       center: uluru
+    //     });
+    //     var marker = new google.maps.Marker({
+    //       position: uluru,
+    //       map: map
+    //     });
+    //   },
     isValid:function(location) {
       var validName = location.name
         .toLowerCase()
@@ -106,8 +106,8 @@ var LocationsIndexPage = {
       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
 
          this.locations = response.data; 
-         this.lt = response.data.latitude;
-         this.lg = response.data.longitude;
+         // this.lt = response.data.latitude;
+         // this.lg = response.data.longitude;
          
          console.log(this.locations);
 
@@ -116,7 +116,7 @@ var LocationsIndexPage = {
     }
   },
   updated:function() {
-    this.initMap();
+    // this.initMap();
 
     
   },
@@ -206,6 +206,8 @@ var LocationsIndexPage = {
 
 
 
+
+
 var LocationsShowPage = {
   template: "#locations-show-page",
   data: function() {
@@ -236,6 +238,10 @@ var LocationsShowPage = {
       }.bind(this));
       this.initMap();
   },
+  mounted: function() {
+    $("#datepicker").datepicker();
+  },
+
   methods: {
     initMap: function() {
       console.log(this.lt);
@@ -285,6 +291,8 @@ var LocationsShowPage = {
   },
   computed: {}
 };
+
+
 
 
 // // User Locations component
