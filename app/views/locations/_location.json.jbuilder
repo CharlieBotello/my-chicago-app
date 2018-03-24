@@ -9,6 +9,7 @@ json.year location.year
 json.first_image_url location.first_image_url
 
 
+
 json.stories location.stories
 
 

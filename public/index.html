@@ -50,12 +50,14 @@
 <!--     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
-   <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap"
-    async defer></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap"
+    async defer></script>
 
     <!-- <script src=”https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g” async defer></script> -->
 
      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g"></script>
+
+
 
     
 
@@ -499,6 +501,10 @@
 
 <template id="locations-show-page">
   <div class="vue-component">
+<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap"
+    async defer></script> -->
+
+
     <section id="projects" class="g-pt-100 g-pb-100--md">
       <div class="container text-center g-max-width-750 g-mb-70">
         <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
@@ -571,20 +577,24 @@
 
      <!--    <a class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" type="button"  href="/#/user_locations/new" >Add to Day Planner </a> -->
       
-
-      <div class="container-fluid px-0">
+      <div class="cotainer">
         <div class="row no-gutters">
-
-          <div class="col-md-6 col-lg-6 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+          <div class="col-md-6 col-lg-6">
             <img class=" large img-fluid w-100" v-if="location.image_url
             " v-bind:src="location.image_url" alt="Image Description">
           </div>
           <div class="col-md-6 col-lg-6">
-<!--             <img class=" large img-fluid w-100" v-if="location.image_url
-            " v-bind:src="location.image_url" alt="Image Description"> -->
-            <div class="google-map" id="map"></div>
+            <div class="google-map" id="map">
 
-          </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+
+
 
           <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
             <div v-for="story_origin in location.stories_origins" class="text-center text-uppercase g-pa-30">
@@ -595,6 +605,7 @@
                   <!-- <li>{{story_origin}}</li> -->
                   <li>{{ story_origin.content }}</li>
                 </ul>
+
               </div>
 
               <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in"></h3>
@@ -701,7 +712,77 @@
 
 <template id="users-locations-index-page">   
   <div style="padding: 120px;" class="vue-component">
+
+
     <div v-for="uL in user_locations" class="row">
+      <section class="g-bg-gray-light-v5">
+        <div class="container g-py-100">
+          <div class="row justify-content-center g-mb-110">
+            <div class="col-lg-8">
+              <!-- Heading -->
+              <div class="text-center">
+                <span class="d-block g-color-primary g-font-size-17 text-uppercase mb-5">Your Locations Planner</span>
+                <h2 class="h1 g-color-black g-font-weight-600 mb-5">The leading branding<br>theme for any professionals</h2>
+                <p class="lead mb-5">Explore every gem the city has to offer &amp; .</p>
+
+                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="'/#/locations/' + uL.location_id">Go to locations</a>
+              </div>
+              <!-- End Heading -->
+            </div>
+          </div>
+
+          <div class="row">
+
+
+            <div class="col-sm-6 col-lg-3 g-mb-30">
+              <!-- Article -->
+              <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
+                <img v-for="uLI in uL.location_images" class="img-fluid w-100 g-rounded-top-5" v-bind:src="uLI.image_url" alt="Image Description">
+                <div class="g-pa-30">
+                  <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
+                      <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" v-bind:href="'/#/locations/' + uL.location_id">{{uL.location.name}}</a>
+                    </h3>
+                  <p class="g-color-gray-dark-v4">We are jacks of all. We are experts in all.</p>
+                </div>
+              </article>
+              <!-- End Article -->
+            </div>
+
+            <div class="col-sm-6 col-lg-3 g-mb-30">
+              <!-- Article -->
+              <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
+                <img class="img-fluid w-100 g-rounded-top-5" src="main/assets/img-temp/350x230/img3.jpg" alt="Image Description">
+                <div class="g-pa-30">
+                  <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
+                      <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#!">Let's talk details</a>
+                    </h3>
+                  <p class="g-color-gray-dark-v4">It's good to virtually meet you.</p>
+                </div>
+              </article>
+              <!-- End Article -->
+            </div>
+
+            <div class="col-sm-6 col-lg-3 g-mb-30">
+              <!-- Article -->
+              <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
+                <img class="img-fluid w-100 g-rounded-top-5" src="main/assets/img-temp/350x230/img4.jpg" alt="Image Description">
+                <div class="g-pa-30">
+                  <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
+                      <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#!">It's a lifestyle.</a>
+                    </h3>
+                  <p class="g-color-gray-dark-v4">More than a look, design is functional.</p>
+                </div>
+              </article>
+              <!-- End Article -->
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+
+
+
       <section class="g-bg-gray-light-v5">
         <div class="container g-py-100">
           <div class="row justify-content-center g-mb-110">
@@ -994,5 +1075,7 @@
     </div>
   </div>
 </template>
+
+
 
 

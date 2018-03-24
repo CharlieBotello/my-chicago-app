@@ -301,130 +301,58 @@ var LocationsShowPage = {
         this.lg = parseFloat(response.data.longitude);
         console.log(this.location);
       }.bind(this));
-      // this.initMap();
+      this.initMap();
   },
 
 
   methods: {
-    // initMap: function() {
-    //   console.log(this.lt);
-    //   console.log(this.lg);
-    //     var uluru = {lat: this.lt, lng: this.lg};
+    initMap: function() {
+      console.log(this.lt);
+      console.log(this.lg);
+        var landmark = {lat: this.lt, lng: this.lg};
 
-    //     var map = new google.maps.Map(document.getElementById('map'), {
-    //       zoom: 15,
-    //       center: uluru,
-    //       styles:   [
-    //                   {
-    //                       "featureType": "all",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "visibility": "on"
-    //                           },
-    //                           {
-    //                               "color": "#ff0000"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "all",
-    //                       "elementType": "labels.icon",
-    //                       "stylers": [
-    //                           {
-    //                               "color": "#522828"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "administrative",
-    //                       "elementType": "labels.text.fill",
-    //                       "stylers": [
-    //                           {
-    //                               "color": "#444444"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "landscape",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "color": "#f2f2f2"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "poi",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "visibility": "off"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "road",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "saturation": -100
-    //                           },
-    //                           {
-    //                               "lightness": 45
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "road.highway",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "visibility": "simplified"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "road.arterial",
-    //                       "elementType": "labels.icon",
-    //                       "stylers": [
-    //                           {
-    //                               "visibility": "off"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "transit",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "visibility": "off"
-    //                           }
-    //                       ]
-    //                   },
-    //                   {
-    //                       "featureType": "water",
-    //                       "elementType": "all",
-    //                       "stylers": [
-    //                           {
-    //                               "color": "#16313c"
-    //                           },
-    //                           {
-    //                               "visibility": "on"
-    //                           }
-    //                       ]
-    //                   }
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center:landmark,
+          
 
-    //                 ]
-    //     });
 
-    //     var marker = new google.maps.Marker({
-    //       position: uluru,
-    //       map: map
-    //     });
 
-    //   console.log(uluru);
-    // },
+        });
+        var mapOptions = {
+          zoom: 18,
+          center: landmark
+          // mapTypeId: 'satellite',
+          
+        };
+
+
+
+
+
+        var marker = new google.maps.Marker({
+          position: landmark,
+          map: map,
+          icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+          title: 'Click to zoom'
+
+        });
+
+
+        map.addListener('center_changed', function() {
+          // 3 seconds after the center of the map has changed, pan back to the
+          // marker.
+          window.setTimeout(function() {
+            map.panTo(marker.getPosition());
+          }, 3000);
+        });
+        marker.addListener('click', function() {
+            map.setZoom(16);
+            map.setCenter(marker.getPosition());
+          });
+
+      console.log(landmark);
+    },
 
     submit: function() {
       var params = {
@@ -454,10 +382,10 @@ var LocationsShowPage = {
         );
     }
   },
-  // updated:function() {
-  //   // this.initMap(); 
+  updated:function() {
+    this.initMap(); 
     
-  // },
+  },
   computed: {}
 };
 

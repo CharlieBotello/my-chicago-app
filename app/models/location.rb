@@ -45,6 +45,14 @@ class Location < ApplicationRecord
     end 
     stories_world
   end 
+
+
+  # def get_stories_world_title
+  #   stories_world = []
+  #   stories.each do 
+  #     if story.categoru == "world"
+  #       stories_world_title << 
+  # end 
   # def as_json
   #   {
   #     id: self.id,

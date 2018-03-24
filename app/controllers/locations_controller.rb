@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
     before_action :authenticate_user, only: [:create, :update, :destroy]
   def index
-    @locations = Location.all.limit(20)
+    @locations = Location.all.limit(7)
     search_name = params[:search_name]
     search_year = params[:search_year]
 
