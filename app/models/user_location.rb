@@ -15,9 +15,9 @@ class UserLocation < ApplicationRecord
       end_time
     end
   end
-  def updated_phone_number
-    phone_number = "+1" + phone_number
-  end
+  # def updated_phone_number
+  #   phone_number = "+1 #{phone_number}"
+  # end
   def as_json
     {
       id: self.id,
@@ -25,7 +25,7 @@ class UserLocation < ApplicationRecord
       location_id: self.location_id,
       start_time: self.pretty_start_time,
       end_time: self.pretty_end_time,
-      phone_number: self.updated_phone_number
+      phone_number: self.phone_number
     }
   end
 end

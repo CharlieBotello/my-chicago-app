@@ -1,5 +1,5 @@
 /* global Vue, VueRouter, axios */
-
+// window.$ = window.jQuery = require("jquery");
 // Home component
 
 var HomePage = {
@@ -11,7 +11,12 @@ var HomePage = {
   },
   created: function() {},
   methods: {},
-  computed: {}
+  computed: {},
+  mounted: function() {
+    $(document).ready(function () {
+      $.HSCore.components.HSCarousel.init('.js-carousel');
+    });
+  }
 };
 
 
@@ -59,16 +64,88 @@ var ImagesPage = {
 // }
 // // Location components
 
+// var LocationsIndexPage = {
+//   template: "#locations-index-page",
+//   data: function() {
+//     return {
+//       locations: [],
+//       location: this.location,
+//       searchName: "",
+//       searchYear: ""
+
+//     };
+//   },
+//   created: function() {
+//     axios.get("/locations")
+//     .then(function(response) {
+
+//       this.locations = response.data;
+
+//     }.bind(this));
+  
+//   },
+//   methods: {
+//     isValid:function(location) {
+//       var validName = location.name
+//         .toLowerCase()
+//         .includes(this.searchName.toLowerCase());
+//       var validYear = location.year
+//         .toLowerCase()
+//         .includes(this.searchYear.toLowerCase());
+//       return validName && validYear
+
+//     },
+//     go: function() {
+//       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
+
+//          this.locations = response.data; 
+
+         
+//          console.log(this.locations);
+
+//       }.bind(this));
+
+//     }
+//   },
+//   updated:function() {
+//     // this.initMap();
+
+    
+//   },
+//   computed: {
+
+//   }
+// };
+
+
+
 var LocationsIndexPage = {
   template: "#locations-index-page",
+  name: 'google-map',
+  props: ['name'],
   data: function() {
     return {
       locations: [],
       location: this.location,
       searchName: "",
-      searchYear: ""
-      // lt: 20,
-      // lg: 30
+      searchYear: "",
+      lt: "",
+      lg: "",
+      markerCoordinates: [{
+        latitude: 51.501527,
+        longitude: -0.1921837
+      }, {
+        latitude: 51.505874,
+        longitude: -0.1838486
+      }, {
+        latitude: 51.4998973,
+        longitude: -0.202432
+      }],
+      mapName: this.name + "-map",
+      map: null,
+      bounds: null,
+      markers: []
+
     };
   },
   created: function() {
@@ -76,22 +153,28 @@ var LocationsIndexPage = {
     .then(function(response) {
 
       this.locations = response.data;
+      // this.lt = parseFloat(response.data.latitude);
+      // this.lg = parseFloat(response.data.longitude);
+
+      // console.log(this.markerCoordinates);
+      // this.locations.forEach(function (location) {
+      //   var l = parseFloat(location.latitude);
+      //   var lg = parseFloat(location.longitude);
+      //   console.log(this.markerCoordinates);
+      //   this.markerCoordinates.push({latitude: l, longitude: lg});
+      // });
+      // console.log(this.markerCoordinates);
+      
+      
 
     }.bind(this));
+
+  
+
+
     // this.initMap();
   },
   methods: {
-    // initMap: function() {
-    //     var uluru = {lat: this.lt, lng: this.lg};
-    //     var map = new google.maps.Map(document.getElementById('map'), {
-    //       zoom: 4,
-    //       center: uluru
-    //     });
-    //     var marker = new google.maps.Marker({
-    //       position: uluru,
-    //       map: map
-    //     });
-    //   },
     isValid:function(location) {
       var validName = location.name
         .toLowerCase()
@@ -101,6 +184,9 @@ var LocationsIndexPage = {
         .includes(this.searchYear.toLowerCase());
       return validName && validYear
       // return validName 
+    },
+    letterName:function(l) {
+      this.letterName
     },
     go: function() {
       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
@@ -112,99 +198,84 @@ var LocationsIndexPage = {
          console.log(this.locations);
 
       }.bind(this));
+      // this.initMap();
 
+    },
+    // initMap: function() {
+    //   console.log(this.lt);
+    //   console.log(this.lg);
+    //     var uluru = {lat: this.lt, lng: this.lg};
+
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //       zoom: 15,
+    //       center: uluru
+       
+    //     });
+    //     this.locations.forEach(function(location) {
+
+    //       var marker = new google.maps.Marker({
+    //         position: position,
+    //         map: map
+    //       });
+
+    //     });         
+
+    // }
+  },
+  mounted: function () {
+    this.bounds = new google.maps.LatLngBounds();
+    const element = document.getElementById(this.mapName)
+    const mapCentre = this.markerCoordinates[0]
+    const options = {
+      center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
     }
+    this.map = new google.maps.Map(element, options);
+    this.markerCoordinates.forEach((coord) => {
+      const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+      const marker = new google.maps.Marker({ 
+        position,
+        map: this.map
+      });
+    this.markers.push(marker)
+      this.map.fitBounds(this.bounds.extend(position))
+    });
   },
-  updated:function() {
-    // this.initMap();
+  // updated: function() {
+  //   // LocationsIndexPage.initMap();
+  //   // this.$nextTick(
+  //   //   function() {
+  //       const bounds = new google.maps.LatLngBounds();
+  //       const element = document.getElementById("map")
 
-    
-  },
-  computed: {
+  //     //   this.markerCoordinates = this.locations.map(function(location) {
+  //     //   var l = parseFloat(location.latitude);
+  //     //   var lg = parseFloat(location.longitude);
+  //     //   return {latitude: l, longitude: lg}
+  //     // });
 
-  }
+      
+
+
+
+  //       const mapCentre = this.markerCoordinates[0]
+  //       console.log(mapCentre);
+  //       const options = {
+  //         center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+  //       }
+  //       const map = new google.maps.Map(element, options);
+  //       this.markerCoordinates.forEach((coord) => {
+  //         const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+  //         const marker = new google.maps.Marker({ 
+  //           position,
+  //           map
+  //         });
+  //         map.fitBounds(bounds.extend(position))
+  //       });
+  //   //   }
+  //   // );
+  // }, 
+  computed: {}
 };
-
-
-
-
-
-
-
-
-// var UserLocationsIndexPage = {
-//   template: "#users-locations-index-page",
-//   name: 'google-map',
-//   props: ['name'],
-
-//   data: function() {
-//     return {
-//       user_locations: [],
-//       location: this.location,
-
-//       mapName: this.name + "-map",
-//       map: null,
-//     };
-//   },
-//   created: function() {
-//     axios.get("/user_locations")
-//     .then(function(response) {
-//       this.user_locations = response.data;
-//       this.location = response.data.latitude + ", " + response.data.longitude;
-//       console.log(this.user_locations);
-//     }.bind(this));
-//   },
-
-
-//   updated: function () {
-//       this.$nextTick(function () {
-
-//       console.log("UGH")
-
-//         geocoder = new google.maps.Geocoder();
-
-//         var latlng = new google.maps.LatLng(39.881832, -84.623177);
-
-//         var mapOptions = {
-//                           zoom: 13,
-//                           center: latlng,
-//                           styles: [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}],
-//                         }
-
-//         map = new google.maps.Map(document.getElementById(this.mapName), mapOptions);
-
-//         var geoAddress = this.location
-
-//         geocoder.geocode( { 'address' : geoAddress}, function(results, status) {
-//               if (status == 'OK') {
-
-//                 map.setCenter(results[0].geometry.location);
-//                 var marker = new google.maps.Marker({
-//                     map: map,
-//                     position: results[0].geometry.location
-//                 });
-//               } else {
-//                 alert('Geocode was not successful for the following reason: ' + status);
-//               }
-//             });
-//       });
-//     },
-
-//   created: function() {
-//     axios.get("/user_locations")
-//     .then(function(response) {
-//       this.user_locations = response.data;
-//       console.log(this.user_locations);
-//     }.bind(this));
-//   },
-//   methods: {},
-//   computed: {}
-// };
-
-
-
-
-
 
 
 
@@ -214,13 +285,14 @@ var LocationsShowPage = {
     return {
       startTime: "",
       endTime: "",
+      phoneNumber: "",
       // myLocationID:"",
       location: {
         name: "",
         year: "",
         address: "",
-        lt: 0,
-        lg: 0,
+        lt: "",
+        lg: "",
         stories:[]
         // location.location_story: "",
       },
@@ -236,34 +308,138 @@ var LocationsShowPage = {
         this.lg = parseFloat(response.data.longitude);
         console.log(this.location);
       }.bind(this));
-      this.initMap();
-  },
-  mounted: function() {
-    $("#datepicker").datepicker();
+      // this.initMap();
   },
 
+
   methods: {
-    initMap: function() {
-      console.log(this.lt);
-      console.log(this.lg);
-        var uluru = {lat: this.lt, lng: this.lg};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      console.log(uluru);
-      },
+    // initMap: function() {
+    //   console.log(this.lt);
+    //   console.log(this.lg);
+    //     var uluru = {lat: this.lt, lng: this.lg};
+
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //       zoom: 15,
+    //       center: uluru,
+    //       styles:   [
+    //                   {
+    //                       "featureType": "all",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "visibility": "on"
+    //                           },
+    //                           {
+    //                               "color": "#ff0000"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "all",
+    //                       "elementType": "labels.icon",
+    //                       "stylers": [
+    //                           {
+    //                               "color": "#522828"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "administrative",
+    //                       "elementType": "labels.text.fill",
+    //                       "stylers": [
+    //                           {
+    //                               "color": "#444444"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "landscape",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "color": "#f2f2f2"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "poi",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "visibility": "off"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "road",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "saturation": -100
+    //                           },
+    //                           {
+    //                               "lightness": 45
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "road.highway",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "visibility": "simplified"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "road.arterial",
+    //                       "elementType": "labels.icon",
+    //                       "stylers": [
+    //                           {
+    //                               "visibility": "off"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "transit",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "visibility": "off"
+    //                           }
+    //                       ]
+    //                   },
+    //                   {
+    //                       "featureType": "water",
+    //                       "elementType": "all",
+    //                       "stylers": [
+    //                           {
+    //                               "color": "#16313c"
+    //                           },
+    //                           {
+    //                               "visibility": "on"
+    //                           }
+    //                       ]
+    //                   }
+
+    //                 ]
+    //     });
+
+    //     var marker = new google.maps.Marker({
+    //       position: uluru,
+    //       map: map
+    //     });
+
+    //   console.log(uluru);
+    // },
 
     submit: function() {
       var params = {
         // user_id: this.userId,
         location_id: this.location.id,
         start_time: this.startTime,
-        end_time: this.endTime
+        end_time: this.endTime,
+        phone_number: this.phoneNumber
 
       };
 
@@ -285,10 +461,10 @@ var LocationsShowPage = {
         );
     }
   },
-  updated:function() {
-    this.initMap(); 
+  // updated:function() {
+  //   // this.initMap(); 
     
-  },
+  // },
   computed: {}
 };
 
@@ -296,6 +472,10 @@ var LocationsShowPage = {
 
 
 // // User Locations component
+
+
+
+
 
 
 
@@ -318,7 +498,13 @@ var UserLocationsIndexPage = {
     }.bind(this));
   },
   methods: {},
-  computed: {}
+
+  computed: {},
+  mounted: function() {
+    $(document).ready(function () {
+      $.HSCore.components.HSCarousel.init('.js-carousel');
+    });
+  },
 };
 
 

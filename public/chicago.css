@@ -12,3 +12,30 @@ body .large {
 #map {
 height: 400px;
 width: 50%;
+
+}
+#form {
+  display: inline-block;
+  text-align: center;
+}
+
+
+
+#same {
+  height: 450px;
+  width: 100%;
+}
+
+#daycenter {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.google-map {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  background: gray;
+}

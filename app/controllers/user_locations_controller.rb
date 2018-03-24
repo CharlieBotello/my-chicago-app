@@ -27,10 +27,10 @@ class UserLocationsController < ApplicationController
     client = Twilio::REST::Client.new account_sid, auth_token
 
 
-    user_phone = @user_location.updated_phone_number
+    user_phone = @user_location.phone_number
 
     from = '+13462201025' # Your Twilio number
-    to = "#{user_phone}" # Your mobile phone number
+    to = "+1#{user_phone}" # Your mobile phone number
 
     pretty_start_time = @user_location.start_time.strftime("%e%b%Y")
 
