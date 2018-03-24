@@ -151,27 +151,9 @@ var LocationsIndexPage = {
   created: function() {
     axios.get("/locations")
     .then(function(response) {
-
       this.locations = response.data;
-      // this.lt = parseFloat(response.data.latitude);
-      // this.lg = parseFloat(response.data.longitude);
-
-      // console.log(this.markerCoordinates);
-      // this.locations.forEach(function (location) {
-      //   var l = parseFloat(location.latitude);
-      //   var lg = parseFloat(location.longitude);
-      //   console.log(this.markerCoordinates);
-      //   this.markerCoordinates.push({latitude: l, longitude: lg});
-      // });
-      // console.log(this.markerCoordinates);
-      
-      
-
     }.bind(this));
-
-  
-
-
+    console.log(this.locations);
     // this.initMap();
   },
   methods: {
@@ -222,23 +204,34 @@ var LocationsIndexPage = {
 
     // }
   },
-  mounted: function () {
-    this.bounds = new google.maps.LatLngBounds();
-    const element = document.getElementById(this.mapName)
-    const mapCentre = this.markerCoordinates[0]
-    const options = {
-      center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-    }
-    this.map = new google.maps.Map(element, options);
-    this.markerCoordinates.forEach((coord) => {
-      const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-      const marker = new google.maps.Marker({ 
-        position,
-        map: this.map
-      });
-    this.markers.push(marker)
-      this.map.fitBounds(this.bounds.extend(position))
-    });
+  updated: function () {
+      // this.markerCoordinates = this.locations.forEach(function(charlie) {
+      //   return { latitude: charlie.latitude,longitude: location.longitude }
+      // })
+      this.$nextTick(
+        function () {
+          console.log(this.locations);
+          this.markerCoordinates = this.locations.map(function(location) {
+            return {latitude: location.latitude, longitude: location.longitude}
+          });
+          this.bounds = new google.maps.LatLngBounds();
+          const element = document.getElementById(this.mapName)
+          const mapCentre = this.markerCoordinates[0]
+          const options = {
+            center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+          }
+          this.map = new google.maps.Map(element, options);
+          this.markerCoordinates.forEach((coord) => {
+              const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+              const marker = new google.maps.Marker({ 
+                position,
+                map: this.map
+              });
+            this.markers.push(marker)
+            this.map.fitBounds(this.bounds.extend(position))
+          });
+        }  
+      );
   },
   // updated: function() {
   //   // LocationsIndexPage.initMap();
@@ -705,20 +698,13 @@ var app = new Vue({
   el: "#vue-app",
   router: router,
 
-  // data:function () {
-  //   return{
-  //     myLocationID: "ss"
-  //   }
-    
-  // },
-  // methods:{
 
-  // },
   created: function() {
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
     }
+
   }
 });
 
