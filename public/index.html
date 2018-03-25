@@ -275,7 +275,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>locations </h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Take a dive into the citys's oldest and historically important locations.</p>
-                <a href="/#/locations" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -288,7 +288,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>Stories</h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Learn about the origin of the location, as well as stories from the time.</p>
-                <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a href="/#/'locations' + 1" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -444,10 +444,12 @@
       }
     </style>
                  --> 
+
+
       
     Search by Name: <input v-model="searchName" list="names">
 
-        <datalist v-model="searchName" id="names">
+        <datalist v-model="searchName" lazy id="names">
           <option v-for="location in locations">{{ location.name }}</option>
 
         </datalist>
@@ -536,15 +538,15 @@
                   <li class="text-danger" v-for="error in errors">{{ error }}</li>
                 </ul>
                 <div id="form" class="form-group">
-                  <label>Start Time:</label>
-                  <input type="text" v-model="startTime">
+                  <label>Date of visit:</label>
+                  <input placeholder="Ex: year/mo/day" v-model="startTime">
                 </div>
-                <div id="form" class="form-group">
+             <!--    <div id="form" class="form-group">
                   <label> End Time:</label>
                   <input type="text" v-model="endTime">
-                </div>
+                </div> -->
                 <div id="form" class="form-group">
-                  <label>Phone Number:</label>
+                  <label>Phone Num:</label>
                   <input type="text" v-model="phoneNumber">
                 </div>
               </div>
@@ -725,7 +727,7 @@
                 <h2 class="h1 g-color-black g-font-weight-600 mb-5">The leading branding<br>theme for any professionals</h2>
                 <p class="lead mb-5">Explore every gem the city has to offer &amp; .</p>
 
-                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="'/#/locations/' + uL.location_id">Go to locations</a>
+                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Go to locations</a>
               </div>
               <!-- End Heading -->
             </div>
@@ -737,7 +739,7 @@
             <div class="col-sm-6 col-lg-3 g-mb-30">
               <!-- Article -->
               <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
-                <img v-for="uLI in uL.location_images" class="img-fluid w-100 g-rounded-top-5" v-bind:src="uLI.image_url" alt="Image Description">
+                <img id="transition" v-for="uLI in uL.location_images" class="img-fluid w-100 g-rounded-top-5" v-bind:src="uLI.image_url" alt="Image Description">
                 <div class="g-pa-30">
                   <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
                       <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" v-bind:href="'/#/locations/' + uL.location_id">{{uL.location.name}}</a>
@@ -782,99 +784,6 @@
 
 
 
-
-      <section class="g-bg-gray-light-v5">
-        <div class="container g-py-100">
-          <div class="row justify-content-center g-mb-110">
-            <div class="col-lg-8">
-              <!-- Heading -->
-              <div class="text-center">
-                <span class="d-block g-color-primary g-font-size-17 text-uppercase mb-5">We create</span>
-                <h2 class="h1 g-color-black g-font-weight-600 mb-5">The leading branding<br>theme for any professionals</h2>
-                <p class="lead mb-5">We are a creative studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity. This is where we sit down, grab a cup of coffee and dial in the details. Understanding the task at hand and ironing
-                  out the wrinkles is key.</p>
-                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" href="#!">Explore more</a>
-              </div>
-              <!-- End Heading -->
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6 col-lg-3 g-mb-30">
-              <!-- Article -->
-              <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
-                <img class="img-fluid w-100 g-rounded-top-5" src="main/assets/img-temp/350x230/img1.jpg" alt="Image Description">
-                <div class="g-pa-30">
-                  <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
-                      <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#!">Let's break the ice.</a>
-                    </h3>
-                  <p class="g-color-gray-dark-v4">It's not what we do, but who we are.</p>
-                </div>
-              </article>
-              <!-- End Article -->
-            </div>
-
-            <div class="col-sm-6 col-lg-3 g-mb-30">
-              <!-- Article -->
-              <article class="u-shadow-v21 u-shadow-v21--hover g-bg-white g-pos-rel g-rounded-5">
-                <img v-for="uLI in uL.location_images" class="img-fluid w-100 g-rounded-top-5" v-bind:src="uLI.image_url" alt="Image Description">
-                <div class="g-pa-30">
-                  <h3 class="h6 g-color-black g-font-weight-600 text-capitalize mb-3">
-                      <a class="g-color-black g-color-primary--hover g-text-underline--none--hover" href="#!">How can we assist?</a>
-                    </h3>
-                  <p class="g-color-gray-dark-v4">We are jacks of all. We are experts in all.</p>
-                </div>
-              </article>
-              <!-- End Article -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-
-
-
-    <section id="services" class="g-theme-bg-blue-dark-v1 g-py-100">
-      <div v-for="uL in user_locations">
-        <div class="container text-center g-max-width-750 g-mb-70">
-            
-          <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
-            <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
-            <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md g-color-white mb-0">Day Planner</h2>
-          </div>
-          <p class="g-color-white-opacity-0_5 mb-0"></p>
-        </div>
-    
-
-
-        <div class="container">
-       <!--      Carousel -->
-          <div class="js-carousel"
-               data-infinite="true"
-               data-arrows-classes="u-arrow-v1 g-pos-abs g-top-35x g-width-45 g-height-45 g-color-white g-theme-bg-blue-dark-v2 g-bg-primary--hover g-rounded-50x g-transition-0_2 g-transition--ease-in"
-               data-arrow-left-classes="fa fa-chevron-left g-left-0"
-               data-arrow-right-classes="fa fa-chevron-right g-right-0">
-
-            <div style="padding: 50px" class="js-slide">
-              <div class="container text-center g-max-width-600 g-mb-30">
-                <h4 class="h6 text-uppercase g-font-weight-700 g-color-white g-mb-20">{{uL.location.name}}</h4>
-
-                <img v-for="uLI in uL.location_images" class="img-fluid d-inline-block" v-bind:src="uLI.image_url" alt="Image description">
-              </div>
-
-              <div class="container text-center g-max-width-550">
-
-                <p class="g-font-size-default g-color-white-opacity-0_8 g-mb-40" >Date Time: {{ uL.start_time }}</p>
-
-                <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover"> view location </a>
-              </div>
-            </div>    
-          </div>
-        </div>    
-      </div>
-    </section>
   </div>
 </template>
 

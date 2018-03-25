@@ -439,6 +439,69 @@ Wilmont Vickrey, Founding Principal of VOA Associates, generously furnished crit
   {category: "world", content: "On July 29, 1909, the newly formed General Motors Corporation (GM) acquires the country’s leading luxury automaker, the Cadillac Automobile Company, for $4.5 million.\n\nCadillac was founded out of the ruins of automotive pioneer Henry Ford’s second failed company (his third effort, the Ford Motor Company, finally succeeded). When the shareholders of the defunct Henry Ford Company called in Detroit machinist Henry Leland to assess the company’s assets for their planned sale, Leland convinced them to stay in business. His idea was to combine Ford’s latest chassis (frame) with a single-cylinder engine developed by Oldsmobile, another early automaker. To that end, the Cadillac Car Company (named for the French explorer Antoine Laumet de La Mothe Cadillac, who founded the city of Detroit in 1701) was founded in August 1902. Leland introduced the first Cadillac–priced at $850–at the New York Auto Show the following year.\n\nIn its first year of production, Cadillac put out nearly 2500 cars, a huge number at the time. Leland, who was reportedly motivated by an intense competition with Henry Ford, assumed full leadership of Cadillac in 1904, and with his son Wilfred by his side he firmly established the brand’s reputation for quality. Among the excellent luxury cars being produced in America at the time–including Packard, Lozier, McFarland and Pierce-Arrow–Cadillac led the field, making the top 10 in overall U.S. auto sales every year from 1904 to 1915.\n\nBy 1909, William C. Durant had assembled Buick and Oldsmobile as cornerstones of his new General Motors Corporation, founded the year before. By the end of July, he had persuaded Wilfred Leland to sell Cadillac for $4.5 million in GM stock. Durant kept the Lelands on in their management position, however, giving them full responsibility for automotive production. Three years later, Cadillac introduced the world’s first successful electric self-starter, developed by Charles F. Kettering; its pioneering V-8 engine was installed in all Cadillac models in 1915.\n\nOver the years, Cadillac maintained its reputation for luxury and innovation: In 1954, for example, it was the first automaker to provide power steering and automatic windshield washers as standard equipment on all its vehicles. Though the brand was knocked out of its top-of-the-market position in the 1980s by the German luxury automaker Mercedes-Benz, it sought to reestablish itself during the following decades, and remains a leader in the luxury car market.", title: "General Motors buys Cadillac"},
   {category: "world", content: "On this day in 1887, President Grover Cleveland signs the Dawes Severalty Act into law. The act split up reservations held communally by Native American tribes into smaller units and distributed these units to individuals within the tribe. Also called the General Allotment Act, the law changed the legal status of Native Americans from tribal members to individuals subject to federal laws and dissolved many tribal affiliations The Dawes Severalty/General Allotment Act constituted a huge blow to tribal sovereignty.\n\nCleveland’s goal was to encourage Native Americans to integrate into American agrarian culture. Cleveland, who once said though the people support the government; the government should not support the people, led a socially reformist yet financially conservative government that did not believe in welfare handouts. He signed the act in a sincere but misguided attempt to improve the Native Americans’ lives by incorporating them into white culture, rejecting earlier policies toward Native Americans that forced them to live on desolate reservations where it was difficult to make a living. However, his support of the Dawes Severalty Act actually did more damage than good.\n\nUnder the Dawes Act, the head of each Native American family received 160 acres in an effort to encourage Native Americans to take up farming, live in smaller family units that were considered more American and renounce tribal loyalties. The government held such lands in trust for 25 years, until the recipients could prove themselves self-sufficient farmers. Before the family could sell their allotment, they were required to get a certificate of competency. If the family did not succeed at farming, the land reverted back to the federal government for sale, usually to white settlers. The Dawes Act reduced Native American landholdings from 138 million acres in 1887 to 78 million in 1900 and continued the trend of white settlement on previously Native American-held land. In addition, the law created federally funded boarding schools designed to assimilate Native American children into white society. Family and cultural ties were practically destroyed by the now-notorious boarding schools, in which children were punished for speaking their native language or performing native rituals.\n\nThe Dawes Severalty Act was finally abolished in 1934, during President Franklin Roosevelt’s first term.", title: "Cleveland signs devastating Dawes Act into law"}
 ])
+
+
+
+Story.create!([
+
+  {category: "origins", content: "Rosehill Cemetery (founded 1864) is an American Victorian-era cemetery on the North Side of Chicago, Illinois, and at 350 acres (1.4 km2), is the largest cemetery in the City of Chicago. The name 'Rosehill' resulted from a City Clerk's error – the area was previously called 'Roe's Hill', named for nearby farmer Hiram Roe. He refused to sell his land to the city until it was promised that the cemetery be named in his honor. It is located in the north east section of the Lincoln Square community area.
+
+Rosehill's Joliet-limestone entrance gate was designed by William W. Boyington, the architect of the Chicago Water Tower and the Old University of Chicago, who is buried in Rosehill. The Rosehill Cemetery Administration Building and Entry Gate was listed on the U.S. National Register of Historic Places in 1975.
+
+Like its sister cemetery Graceland, Rosehill is the burial place of many well-known Chicagoans. The cemetery contains many monuments that are notable for their beauty and eccentricity, such as that of Lulu Fellows.
+
+Several graves from the old City Cemetery, originally located in what is now Lincoln Park were relocated to Rosehill. Some of the gravestones and monuments were also moved to Rosehill Cemetery and can be seen.", title: "Chicago’s Crown Jewel: Discovering Rosehill Cemetery"},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+  {category: "origins", content: "", title: ""},
+
+
+ 
+  {category: "chicago", content: "The Democratic National Convention of 1864 was by most accounts a disaster. Meeting in Chicago to nominate General McClellan to oppose Lincoln,  the party struggled with an unhealed rift between delegats who wanted to crush the Confederacy in one big blow and those who wanted to quit fighting and just let the South go. The Tribune’s coverage made the convention look like a regular amateur hour.
+
+But one man was more impressed: Wilbur F. Storey, arch-conservative editor of the Lincoln-hating Chicago Times. A year before, when he described Lincoln’s speech at Gettysburg as “silly, flat and dishwatery utterances,” he was being relatively subdued in his criticism. Months before, he had said that “history does not acquaint us with so deplorable a failure as this administration,” and held up the coming Emancipation Proclamation as proof of what he’d said all along: that Lincoln was coming to take people’s slaves. This was no war to preserve the union, he said, but a contest to free  “the debased and irredeemably barbarous negro.” (1) The proclamation itself, he said “Will be known in all history as the most wicked, atrocious and revolting deed recorded in the annals of civilization.”(2) (That the war was something to do with states’ rights would not become a conservative talking point for decades).
+
+Even this was not Storey at his worst. Though far more loquacious than most modern cable news loudmouths, some of his racial ramblings would fit in fine among alt-right commenters on youtube. In 1862 he complained that rather than caring about the rights of white men, congress had “n—r on the brain, n—r in the bowels, n—r in the eyes, n—r, n—r everywhere….all powers have found their superior in the great n—r power that moves the huge, unwieldy, reeking and stewing mess of rottenness which makes up this administration and its party.” (3) Though it’s common now for detractors to claim that Lincoln didn’t do enough for the slaves, or that he was really just as big of a racist as any slave-holder, Storey’s rants (and his paper’s popularity) can be useful in showing just what Lincoln was up against.
+
+Naturally, Storey supported McClellan in 1864, and covered the Democrat Convention as though it was the Second Coming (it’s useful to note that the parties of 1864 were very different; Storey referred to his party as both “The democrats” and “conservatives,” while referring to republicans as “the abolitionist party.”) Its in his election coverage that Storey’s rants and language seem most strikingly modern in 2016. Months before the convention, he’d suggested that Lincoln was going to rig the election and refuse to allow conservatives to vote. In an August 31, 1864 editorial, “Plots of Old Abe,” he doubled down on the claim. “The machinery for carrying out the… plot is in readiness,” he wrote. “It will certainly be applied unless, in the interim, the people of Illinois assume such an attitude as will convince the tyrant that there is one step that he cannot with safety take. Let it be understood that… any attempt on the part of the despot to do otherwise (than conduct a fair election) will surely lead to bloodshed, and, perhaps, even at the last moment, the attempt to coerce Illinois may be abandoned.", title: "“Rigged!” The Chicago Times and the Election of 1864"},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+  {category: "chicago", content: "", title: ""},
+                  
+  {category: "world", content: "On this day, Union General Ulysses S. Grant makes what he later recognizes to be his greatest mistake by ordering a frontal assault on entrenched Confederates at Cold Harbor, Virginia. The result was some 7,000 Union casualties in less than an hour of fighting.
+
+Grant’s Army of the Potomac and Robert E. Lee’s Army of Northern Virginia had already inflicted frightful losses upon each other as they wheeled along an arc around Richmond, Virginia—from the Wilderness forest to Spotsylvania and numerous smaller battle sites—the previous month.
+
+On May 30, Lee and Grant collided at Bethesda Church. The next day, the advance units of the armies arrived at the strategic crossroads of Cold Harbor, just 10 miles from Richmond, where a Yankee attack seized the intersection. Sensing that there was a chance to destroy Lee at the gates of Richmond, Grant prepared for a major assault along the entire Confederate front on June 2.
+
+But when Winfield Hancock’s Union corps did not arrive on schedule, the operation was postponed until the following day. The delay was tragic for the Union, because it gave Lee’s troops time to entrench. Perhaps frustrated with the protracted pursuit of Lee’s army, Grant gave the order to attack on June 3—a decision that resulted in an unmitigated disaster. The Yankees met murderous fire, and were only able to reach the Confederate trenches in a few places. The 7,000 Union casualties, compared to only 1,500 for the Confederates, were all lost in under an hour.
+
+Grant pulled out of Cold Harbor nine days later and continued to try to flank Lee’s army. The next stop was Petersburg, south of Richmond, where a nine-month siege ensued. There would be no more attacks on the scale of Cold Harbor.", title: "Union disaster at Cold Harbor"},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+  {category: "world", content: "", title: ""},
+
+    
+])
+
 User.create!([
   {name: "alex", email: "alex@gmail.com", password_digest: "$2a$10$5WNq69iyQKlKBe50FmpXGuZjMr/xqK9VH/0RCHIJKQ3MSfdQlPERS", admin: false}
 ])

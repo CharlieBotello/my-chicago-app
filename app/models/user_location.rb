@@ -15,6 +15,15 @@ class UserLocation < ApplicationRecord
       end_time
     end
   end
+
+  def second_image_url
+    if images.length > 1
+      images[1].image_url
+    else
+      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
+    end
+  end
+
   # def updated_phone_number
   #   phone_number = "+1 #{phone_number}"
   # end

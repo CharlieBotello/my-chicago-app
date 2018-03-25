@@ -39,3 +39,13 @@ width: 50%;
   margin: 0 auto;
   /*background: gray;*/
 }
+
+
+
+.transition {
+    width: 100px;
+    height: 100px;
+    background: red;
+    /*-webkit-transition: width 2s; /* Safari */*/
+    transition: width 2s;
+}

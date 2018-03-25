@@ -210,6 +210,12 @@ var LocationsIndexPage = {
       // })
       this.$nextTick(
         function () {
+          // var service_data = [{
+          //                    latitude: this.location.latitude,
+          //                    longitude: this.longitude.longitude,
+          //                    name: this.location.name,
+          //                    address: this.location.address,
+          //        }]
           console.log(this.locations);
           this.markerCoordinates = this.locations.map(function(location) {
             return {latitude: location.latitude, longitude: location.longitude}
