@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/locations' => 'locations#index'
   post '/locations' => 'locations#create'
   get '/locations/:id' => 'locations#show'
+  get '/locations/:id' => 'locations#random'
   patch '/locations/:id' => 'locations#update'
   delete '/locations/:id' => 'locations#destroy'
 
@@ -16,8 +17,10 @@ Rails.application.routes.draw do
   get '/location_stories' => 'location_stories#index'
   post '/location_stories' => 'location_stories#create'
   get '/location_stories/:id' => 'location_stories#show'
+
   patch '/location_stories/:id' => 'location_stories#update'
   delete '/location_stories/:id' => 'location_stories#destroy'
+
 
   get '/stories' => 'stories#index'
   post '/stories' => 'stories#create'

@@ -20,6 +20,30 @@ var HomePage = {
 };
 
 
+// var RandomPage = {
+//   template: "#random-page",
+//   data: function() {
+//     return {
+//       location: {
+//         name: "",
+//         year: "",
+//         address: "",
+//         lt: "",
+//         lg: "",
+//         stories:[]
+//         // location.location_story: "",
+//       },
+//     };
+//   },
+//   created: function() {
+//     axios.get("/locations/" + this.$route.params.id )
+//       .then(function(response) {
+//         this.location = response.data;
+//       }.bind(this));
+//   },
+//   methods: {},
+//   computed: {}
+// };
 
 // Images component
 var ImagesPage = {
@@ -226,53 +250,34 @@ var LocationsIndexPage = {
           const options = {
             center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
           }
+          var index = 0;
+
           this.map = new google.maps.Map(element, options);
+
           this.markerCoordinates.forEach((coord) => {
               const position = new google.maps.LatLng(coord.latitude, coord.longitude);
               const marker = new google.maps.Marker({ 
                 position,
-                map: this.map
+                map: this.map,
+                title: "test"
               });
+              // var myContent = "<h1>"+this.locations[index].name + "-" + this.locations[index].address+"</h1>"
+              var myContent = "<a href='/#/locations/"+this.locations[index].id+"'>"+this.locations[index].name+'<div>'+
+                '<p>'+this.locations[index].address+'</p>'+'</div'
+
+              var infowindow = new google.maps.InfoWindow({content:myContent});
+
+              marker.addListener('click',function() {
+                infowindow.open(this.map, marker);
+              })
+
             this.markers.push(marker)
             this.map.fitBounds(this.bounds.extend(position))
+            index ++;
           });
         }  
       );
   },
-  // updated: function() {
-  //   // LocationsIndexPage.initMap();
-  //   // this.$nextTick(
-  //   //   function() {
-  //       const bounds = new google.maps.LatLngBounds();
-  //       const element = document.getElementById("map")
-
-  //     //   this.markerCoordinates = this.locations.map(function(location) {
-  //     //   var l = parseFloat(location.latitude);
-  //     //   var lg = parseFloat(location.longitude);
-  //     //   return {latitude: l, longitude: lg}
-  //     // });
-
-      
-
-
-
-  //       const mapCentre = this.markerCoordinates[0]
-  //       console.log(mapCentre);
-  //       const options = {
-  //         center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-  //       }
-  //       const map = new google.maps.Map(element, options);
-  //       this.markerCoordinates.forEach((coord) => {
-  //         const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-  //         const marker = new google.maps.Marker({ 
-  //           position,
-  //           map
-  //         });
-  //         map.fitBounds(bounds.extend(position))
-  //       });
-  //   //   }
-  //   // );
-  // }, 
   computed: {}
 };
 
@@ -612,7 +617,7 @@ var LogoutPage = {
 var router = new VueRouter({
   routes: [
   { path: "/", component: HomePage },
-  // { path: "/random", component: RandomPage},
+  // { path: "/locations/:id", component: RandomPage},
   { path: "/locations", component: LocationsIndexPage},
   { path : "/user_locations/", component: UserLocationsIndexPage},
   // { path: "/user_locations/new", component: UserLocationsNewPage},

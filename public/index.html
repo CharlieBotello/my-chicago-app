@@ -288,7 +288,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>Stories</h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Learn about the origin of the location, as well as stories from the time.</p>
-                <a href="/#/'locations' + 1" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a v-bind:href="'/#/locations/' + Math.floor(Math.random() * 10 + 1)" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -446,8 +446,13 @@
                  --> 
 
 
+    <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Back</a>
+    <div>
       
+    </div>
+    <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="'/#/locations/' + Math.floor(Math.random() * 10 + 1)">Random location</a>
     Search by Name: <input v-model="searchName" list="names">
+
 
         <datalist v-model="searchName" lazy id="names">
           <option v-for="location in locations">{{ location.name }}</option>
@@ -461,13 +466,22 @@
         <!-- <button v-on:click="go()">Go</button> -->
 
     </div>
-    <!-- <div class="google-map" v-bind:id="mapName"></div> -->
-    <!-- <script src=”https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g” async defer></script> -->
-    <div class="google-map" v-bind:id="mapName"></div>
 
-    <!-- <google-map
-  name="example"
-></google-map> -->
+    <div class="google-map" v-bind:id="mapName"></div>
+      <div style="padding: 70px">
+        Search by Name: <input v-model="searchName" list="names">
+            <datalist v-model="searchName" lazy id="names">
+              <option v-for="location in locations">{{ location.name }}</option>
+
+            </datalist>
+              
+        Search by year: <input v-model="searchYear" list="year">
+            <datalist id ="year">
+              <option v-for="location in locations">{{ location.year }}</option>
+            </datalist>
+        
+      </div>
+
     
     <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
       <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
@@ -719,6 +733,7 @@
     <div v-for="uL in user_locations" class="row">
       <section class="g-bg-gray-light-v5">
         <div class="container g-py-100">
+
           <div class="row justify-content-center g-mb-110">
             <div class="col-lg-8">
               <!-- Heading -->
@@ -975,12 +990,11 @@
 
 
 
-
-<template id="random-page">
+<template id="story-page">
   <div class="vue-component">
     <div class="container">
       <h1>{{ message }}</h1>
-      <a class="btn btn-secondary" href="/#/">Go to home</a>
+      <a class="btn btn-secondary" href="/#/random">Go to home</a>
     </div>
   </div>
 </template>

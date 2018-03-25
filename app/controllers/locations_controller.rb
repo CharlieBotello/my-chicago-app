@@ -38,6 +38,7 @@ class LocationsController < ApplicationController
     render 'index.json.jbuilder'
   end
 
+
   def create
     if current_user && current_user.admin
       @location = Location.new(
@@ -61,17 +62,17 @@ class LocationsController < ApplicationController
     input_id = params[:id]
     @location = Location.find_by(id: input_id)
     puts @location.get_stories_origins.length
-    render 'show.json.jbuilder'
-
-
-
-
-
-
-
-
-    
+    render 'show.json.jbuilder'   
   end
+
+  def random
+    input_id = params[:id].random 
+    @location = Location.find_by(id: input_id)
+    puts @location.get_stories_origins.length
+    render 'show.json.jbuilder'
+  end
+
+
   def update
     if current_user && current_user.admin
       input_id = params[:id]
