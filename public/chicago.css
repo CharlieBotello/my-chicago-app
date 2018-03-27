@@ -50,3 +50,22 @@ width: 50%;
     transition: width 2s;
 }
 
+#user-images {
+      width: 500px;
+      height: 200px;
+      /*transition: width 2s, height 4s;*/
+}
+
+#user-info {
+      height: 100px;
+      /*background: white;*/
+}
+
+
+
+
+
+
+
+
+

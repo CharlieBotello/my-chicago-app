@@ -7,13 +7,6 @@ class Location < ApplicationRecord
     updated_at.strftime("%b %d, %Y")
   end
 
-  def first_image_url
-    if images.length > 0
-      images[0].image_url
-    else
-      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
-    end
-  end
 
   def get_stories_origins
     stories_origins = []
@@ -46,6 +39,21 @@ class Location < ApplicationRecord
     stories_world
   end 
 
+  def origins_image_url
+    if images.length > 0
+      images[0].image_url
+    else
+      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
+    end
+  end
+  def chicago_image_url
+    images[1].image_url
+  end 
+
+  def world_image_url
+    images[2].image_url
+ 
+  end 
 
   # def get_stories_world_title
   #   stories_world = []

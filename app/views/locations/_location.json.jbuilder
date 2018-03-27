@@ -7,6 +7,8 @@ json.updated_at location.friendly_update
 json.year location.year
 
 json.first_image_url location.first_image_url
+json.second_image_url location.second_image_url
+json.third_image_url location.third_image_url
 
 
 

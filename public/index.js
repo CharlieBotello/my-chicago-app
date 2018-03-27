@@ -68,7 +68,6 @@ var ImagesPage = {
         // formData.append("image_url_content_type", this.image_url_content_type);
         // formData.append("image_url_content_type", this.image_url_content_type);
 
-
         formData.append("image_urls", event.target.files[0]);
 
         axios
@@ -156,19 +155,14 @@ var LocationsIndexPage = {
       lt: "",
       lg: "",
       markerCoordinates: [{
-        latitude: 51.501527,
-        longitude: -0.1921837
-      }, {
-        latitude: 51.505874,
-        longitude: -0.1838486
-      }, {
-        latitude: 51.4998973,
-        longitude: -0.202432
+        latitude: "",
+        longitude: ""    
       }],
       mapName: this.name + "-map",
       map: null,
       bounds: null,
-      markers: []
+      markers: [],
+      validMap: false,
 
     };
   },
@@ -176,11 +170,18 @@ var LocationsIndexPage = {
     axios.get("/locations")
     .then(function(response) {
       this.locations = response.data;
+
+
     }.bind(this));
     console.log(this.locations);
-    // this.initMap();
+
+    
   },
+
   methods: {
+    showMap:function() {
+      this.validMap = !this.validMap;
+    },
     isValid:function(location) {
       var validName = location.name
         .toLowerCase()
@@ -194,39 +195,30 @@ var LocationsIndexPage = {
     letterName:function(l) {
       this.letterName
     },
+
     go: function() {
+      this.validMap = true;
+      console.log("myGo");
       axios.get("/locations?search_name=" + this.searchName + "&search_year=" + this.searchYear).then(function(response) {
 
-         this.locations = response.data; 
+        // markerCoordinates = [];
+
+        // for(let location of response.data) {
+        //   this.locations.push({latitude: location.latitude, longitude: location.longitude});
+        // }
+
+         // this.locations = response.data; 
          // this.lt = response.data.latitude;
          // this.lg = response.data.longitude;
          
-         console.log(this.locations);
+         // console.log(this.locations);
+         this.locations = response.data;
 
       }.bind(this));
       // this.initMap();
 
     },
-    // initMap: function() {
-    //   console.log(this.lt);
-    //   console.log(this.lg);
-    //     var uluru = {lat: this.lt, lng: this.lg};
 
-    //     var map = new google.maps.Map(document.getElementById('map'), {
-    //       zoom: 15,
-    //       center: uluru
-       
-    //     });
-    //     this.locations.forEach(function(location) {
-
-    //       var marker = new google.maps.Marker({
-    //         position: position,
-    //         map: map
-    //       });
-
-    //     });         
-
-    // }
   },
   updated: function () {
       // this.markerCoordinates = this.locations.forEach(function(charlie) {
@@ -234,16 +226,35 @@ var LocationsIndexPage = {
       // })
       this.$nextTick(
         function () {
-          // var service_data = [{
-          //                    latitude: this.location.latitude,
-          //                    longitude: this.longitude.longitude,
-          //                    name: this.location.name,
-          //                    address: this.location.address,
-          //        }]
           console.log(this.locations);
+              $('input[name=filter]').change(function (e) {
+               map_filter(this.id);
+                filter_markers()
+            });
+   
+
+          // this.markerCoordinates = this.locations.filter(function(location){
+          //   if (location.name.toLowerCase() === "CHARLES TURZAK HOUSE".toLowerCase()) {
+          //     console.log(location);
+          //     return location;
+          //   }
+          // }).map(function(location) {
+          //   return {latitude: location.latitude, longitude: location.longitude}
+          // });
+
           this.markerCoordinates = this.locations.map(function(location) {
             return {latitude: location.latitude, longitude: location.longitude}
           });
+
+          console.log(this.markerCoordinates);
+
+          
+          
+
+
+          
+
+
           this.bounds = new google.maps.LatLngBounds();
           const element = document.getElementById(this.mapName)
           const mapCentre = this.markerCoordinates[0]
@@ -261,9 +272,9 @@ var LocationsIndexPage = {
                 map: this.map,
                 title: "test"
               });
-              // var myContent = "<h1>"+this.locations[index].name + "-" + this.locations[index].address+"</h1>"
+      
               var myContent = "<a href='/#/locations/"+this.locations[index].id+"'>"+this.locations[index].name+'<div>'+
-                '<p>'+this.locations[index].address+'</p>'+'</div'
+                '<center>'+this.locations[index].year+'</center>'+'</div'
 
               var infowindow = new google.maps.InfoWindow({content:myContent});
 
@@ -300,7 +311,8 @@ var LocationsShowPage = {
         stories:[]
         // location.location_story: "",
       },
-      errors: []
+      errors: [],
+      validMap:false
     }
   },
   created: function() {
@@ -317,6 +329,12 @@ var LocationsShowPage = {
 
 
   methods: {
+   showMap:function() {
+      this.validMap = !this.validMap;
+      console.log(this.validMap);
+    },
+
+
     initMap: function() {
       console.log(this.lt);
       console.log(this.lg);
@@ -432,11 +450,16 @@ var UserLocationsIndexPage = {
   methods: {},
 
   computed: {},
-  mounted: function() {
-    $(document).ready(function () {
-      $.HSCore.components.HSCarousel.init('.js-carousel');
-    });
-  },
+  // mounted: function() {
+  //   $(document).ready(function () {
+  //     $.HSCore.components.HSCarousel.init('.js-carousel');
+  //   });
+  // }
+  // mounted: function() {
+  //   $(document).ready(function () {
+  //     $.HSCore.components.HSCarousel.init('.js-carousel');
+  //   });
+  // },
 };
 
 

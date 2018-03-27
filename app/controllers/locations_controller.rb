@@ -34,7 +34,8 @@ class LocationsController < ApplicationController
     if sort_attribute
       @locations = @locations.order(sort_attribute)
     else
-    end       
+    end   
+    puts @locations    
     render 'index.json.jbuilder'
   end
 

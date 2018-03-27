@@ -4,3 +4,4 @@ json.array! @location_stories.each do |location_story|
   json.story_id location_story.story_id
   json.source location_story.source
 end 
+

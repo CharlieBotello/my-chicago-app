@@ -1,0 +1,285 @@
+<template id="locations-show-page">
+  <div class="vue-component">
+<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjGOcR5RMcCVrJ2Ptv5SEqj5syhHgmy7g&callback=initMap"
+    async defer></script> -->
+
+
+    <section id="projects" class="g-pt-100 g-pb-100--md">
+      <div class="container text-center g-max-width-750 g-mb-70">
+        <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+          <h2 class="h2 g-letter-spacing-5 g-font-size-30 g-font-weight-400 g-color-primary g-mb-25">{{ location.year }}</h2>
+          <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">{{location.name}}</h2>
+        </div>
+        <!-- Modal begin -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Add to Day planner
+        </button>
+      </div>
+        <!-- <div class="google-map" id="map"></div>  -->
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ location.name }}</h5>
+              <button type="button" class="close" 
+              data-dismiss="modal" aria-label="Close" >
+                <span aria-hidden="true">&times;</span>
+              </button  >
+            </div>
+            <div class="modal-body">
+              
+              <div class="container">
+                <h1>Add location to day planner</h1>
+                <ul>
+                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                </ul>
+                <div id="form" class="form-group">
+                  <label>Date of visit:</label>
+                  <input placeholder="Ex: year/mo/day" v-model="startTime">
+                </div>
+                <div id="form" class="form-group">
+                  <label>Phone Num:</label>
+                  <input type="text" v-model="phoneNumber">
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-dismiss="modal" v-on:click="submit()">Submit</button>
+            <!--   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- modal end  -->
+
+
+
+
+
+     <!--    <a class="btn btn-md u-btn-primary rounded g-py-13 g-px-25" type="button"  href="/#/user_locations/new" >Add to Day Planner </a> -->
+      
+      <div class="cotainer">
+        <div class="row no-gutters">
+          <div class="col-md-6 col-lg-6">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+ <!--                <div class="carousel-item active">
+                  <img class="d-block img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSigzu4B5na1uVXokG5JGC72LfY2FMXH3UDiOz30K_EHVTofiVw" alt="First slide">
+                </div> -->
+                <div class="carousel-item active">
+                  <img class="d-block img-fluid" v-bind:src="location.origins_url" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block img-fluid" v-bind:src="location.chicago_url" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block img-fluid" v-bind:src="location.world_url" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            
+          </div>
+          
+          <div class="col-md-6 col-lg-6">
+            <button v-on:click="showMap()">Show Map</button>
+            <div v-if="validMap" class="myMap">
+
+              <div  class="google-map" id="map">
+                
+            </div>
+            
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+
+
+
+          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+            <div v-for="story_origin in location.stories_origins" class="text-center text-uppercase g-pa-30">
+              <h3 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ story_origin.category }}</h3>
+
+              <div class="stories">
+                <ul v-for="story_origin in location.stories_origins">
+                  <!-- <li>{{story_origin}}</li> -->
+                  <li>{{ story_origin.content }}</li>
+                </ul>
+
+              </div>
+
+              <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in"></h3>
+            </div>  
+          
+
+          </div>  
+        </div>
+      </div>
+
+
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+
+          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+
+
+            <div v-for="story_chicago in location.stories_chicago" class="text-center text-uppercase g-pa-30">
+              <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ story_chicago.category }}</h4>
+
+              <div class="stories">
+                <ul v-for="story_chicago in location.stories_chicago">
+                  <li>{{ story_chicago.content }}</li>
+                </ul>
+              </div>
+
+              <h3 v-for ="story_chicago in location.stories_chicago" class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">{{ story_chicago.title  }}</h3>
+            </div>  
+          
+          </div>  
+        </div>
+      </div>
+
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+
+          <div class="col-md-12 col-lg-12 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+
+
+            <div v-for="story_world in location.stories_world" class="text-center text-uppercase g-pa-30">
+              <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ story_world.category }}</h4>
+  
+              <div class="stories">
+                <ul v-for="story_world in location.stories_world">
+                  <li>{{story_world.content}}</li>
+                </ul>
+              </div>
+
+              <h3 v-for="story_world in location.stories_world" class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in"></h3>
+            </div>  
+            
+          </div>  
+        </div>
+    </section>  
+  </div>
+</template>
+
+<template id="locations-index-page">
+  <div class="vue-component">
+  <!-- Section Content -->
+  
+  <section id="projects" class="g-pt-100 g-pb-100--md">
+    <div style="padding: 50px">
+<!--     <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+                  -->
+
+
+    <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Back</a>
+    <div>
+      
+    </div>
+    <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="'/#/locations/' + Math.floor(Math.random() * 10 + 1)">Random location</a>
+    Search by Name: <input v-on:change="go()" v-model="searchName" list="names">
+
+
+        <datalist lazy id="names">
+          <option v-for="location in locations">{{ location.name }}</option>
+
+        </datalist>
+          
+    Search by year: <input v-model="searchYear" list="year" v-on:change="go()">
+        <datalist id ="year" >
+          <option v-for="location in locations">{{ location.year }}</option>
+        </datalist>
+        <button v-on:click="go()">Go</button>
+        <button v-on:click="showMap()">Map</button>
+
+    </div>
+
+
+      
+
+
+
+    <div class="google-map" v-bind:id="mapName" v-if="validMap"></div>
+
+      <div style="padding: 70px">
+        Search by Name: <input v-model="searchName" list="names">
+            <datalist  lazy id="names">
+              <option v-for="location in locations">{{ location.name }}</option>
+
+            </datalist>
+              
+        Search by year: <input v-model="searchYear" list="year">
+            <datalist id ="year">
+              <option v-for="location in locations">{{ location.year }}</option>
+            </datalist>
+        
+      </div>
+
+    
+    <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
+      <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Locations</h3>
+        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">Avaiable</h2>
+      </div>
+    </div>
+
+    <div class="container-fluid px-0">
+      <div class="row no-gutters">
+
+        <div v-for="location in locations" v-if="isValid(location)" class="col-md-6 col-lg-4 g-parent g-theme-bg-blue-dark-v1--hover g-transition-0_2 g-transition--ease-in">
+          <img style="width:30px" class="medium img-fluid w-100" v-if="location.image_url" v-bind:src="location.image_url" alt="Image Description">
+        <a v-bind:href="'/#/locations/'+location.id">
+
+  
+          <div class="text-center text-uppercase g-pa-30">
+            <h4 class="g-letter-spacing-5 g-font-size-11 g-font-weight-400 g-color-gray-dark-v5 g-color-primary--parent-hover g-mb-10 g-transition-0_2 g-transition--ease-in">{{ location.name }}</h4>
+
+            <h3 class="h6 g-letter-spacing-2 g-font-weight-700 g-color-white--parent-hover mb-0 g-transition-0_2 g-transition--ease-in">{{ location.year }}</h3>
+          </div>
+        </a>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+</template>
+
+

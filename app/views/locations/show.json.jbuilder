@@ -4,9 +4,18 @@ json.address @location.address
 json.latitude @location.latitude
 json.longitude @location.longitude
 json.updated_at @location.friendly_update
-json.image_url @location.first_image_url
+
+
+
+json.origins_url @location.origins_image_url
+json.chicago_url @location.chicago_image_url
+json.world_url @location.world_image_url
+
+
+
 json.year @location.year
 
+# json.chicago_url @location.second_image_url
 # json.title @location.get_stories_world.title.as_json
 # json.stories @location.location_stories.as_json
 # json.stories @location.stories.as_json

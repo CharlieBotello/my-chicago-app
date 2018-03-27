@@ -9,6 +9,15 @@ class Image < ApplicationRecord
 
   belongs_to :location
 
+
+  # def chicago_image_url
+  #   if images.length > 0
+  #     images[1].image_url
+  #   else
+  #     "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
+  #   end
+  # end
+
   # def as_json
   #   {
   #     id: self.id,

@@ -51,6 +51,7 @@ class UserLocationsController < ApplicationController
     @user_location = UserLocation.find_by(id: input_id)
     render 'show.json.jbuilder'
   end
+  
   def update
     @user_location = UserLocation.find_by(id: input_id)
     @user_location.user_id = params[:user_id] || @user_location.user_id
