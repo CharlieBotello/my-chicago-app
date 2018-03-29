@@ -21,6 +21,11 @@ width: 50%;
 
 
 
+#search{
+  padding-left: 350px;
+
+  
+  }
 #same {
   height: 450px;
   width: 100%;
@@ -34,12 +39,13 @@ width: 50%;
 }
 
 .google-map {
-  width: 800px;
+  width: 2200px;
   height: 600px;
   margin: 0 auto;
-  /*background: gray;*/
+  background: gray;
 }
 
+expand
 
 
 .transition {
@@ -48,6 +54,11 @@ width: 50%;
     background: red;
     /*-webkit-transition: width 2s; /* Safari */*/
     transition: width 2s;
+}
+
+#show{
+  width: 1500px;
+  height: 1000px;
 }
 
 #user-images {
@@ -63,9 +74,14 @@ width: 50%;
 
 
 
+#map-style {
 
+}
 
-
+#index-image {
+  width: 90;
+  height: 10;
+}
 
 
 

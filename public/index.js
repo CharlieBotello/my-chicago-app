@@ -163,6 +163,7 @@ var LocationsIndexPage = {
       bounds: null,
       markers: [],
       validMap: false,
+      charlie: true,
 
     };
   },
@@ -196,6 +197,7 @@ var LocationsIndexPage = {
       this.letterName
     },
 
+
     go: function() {
       this.validMap = true;
       console.log("myGo");
@@ -213,8 +215,12 @@ var LocationsIndexPage = {
          
          // console.log(this.locations);
          this.locations = response.data;
+         console.log(this.locations);
 
       }.bind(this));
+      this.searchName = "";
+      this.searchYear = "";
+      this.charlie = !this.charlie
       // this.initMap();
 
     },
@@ -231,6 +237,12 @@ var LocationsIndexPage = {
                map_filter(this.id);
                 filter_markers()
             });
+
+              $('input[year=filter]').change(function (e) {
+               map_filter(this.id);
+                filter_markers()
+            });
+
    
 
           // this.markerCoordinates = this.locations.filter(function(location){
@@ -248,6 +260,7 @@ var LocationsIndexPage = {
 
           console.log(this.markerCoordinates);
 
+
           
           
 
@@ -263,14 +276,23 @@ var LocationsIndexPage = {
           }
           var index = 0;
 
+
+
           this.map = new google.maps.Map(element, options);
+         
+
+
+
 
           this.markerCoordinates.forEach((coord) => {
               const position = new google.maps.LatLng(coord.latitude, coord.longitude);
               const marker = new google.maps.Marker({ 
                 position,
                 map: this.map,
-                title: "test"
+                title: "test",
+
+
+
               });
       
               var myContent = "<a href='/#/locations/"+this.locations[index].id+"'>"+this.locations[index].name+'<div>'+
@@ -341,16 +363,102 @@ var LocationsShowPage = {
         var landmark = {lat: this.lt, lng: this.lg};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 14,
           center:landmark,
-          
 
+          styles: [
+                      {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                      {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                      {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                      {
+                        featureType: 'administrative.locality',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#d59563'}]
+                      },
+                      {
+                        featureType: 'poi',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#d59563'}]
+                      },
+                      {
+                        featureType: 'poi.park',
+                        elementType: 'geometry',
+                        stylers: [{color: '#263c3f'}]
+                      },
+                      {
+                        featureType: 'poi.park',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#6b9a76'}]
+                      },
+                      {
+                        featureType: 'road',
+                        elementType: 'geometry',
+                        stylers: [{color: '#38414e'}]
+                      },
+                      {
+                        featureType: 'road',
+                        elementType: 'geometry.stroke',
+                        stylers: [{color: '#212a37'}]
+                      },
+                      {
+                        featureType: 'road',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#9ca5b3'}]
+                      },
+                      {
+                        featureType: 'road.highway',
+                        elementType: 'geometry',
+                        stylers: [{color: '#746855'}]
+                      },
+                      {
+                        featureType: 'road.highway',
+                        elementType: 'geometry.stroke',
+                        stylers: [{color: '#1f2835'}]
+                      },
+                      {
+                        featureType: 'road.highway',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#f3d19c'}]
+                      },
+                      {
+                        featureType: 'transit',
+                        elementType: 'geometry',
+                        stylers: [{color: '#2f3948'}]
+                      },
+                      {
+                        featureType: 'transit.station',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#d59563'}]
+                      },
+                      {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{color: '#17263c'}]
+                      },
+                      {
+                        featureType: 'water',
+                        elementType: 'labels.text.fill',
+                        stylers: [{color: '#515c6d'}]
+                      },
+                      {
+                        featureType: 'water',
+                        elementType: 'labels.text.stroke',
+                        stylers: [{color: '#17263c'}]
+                      }
+                    ]
 
 
         });
         var mapOptions = {
-          zoom: 18,
-          center: landmark
+          zoom: 30,
+          center: landmark,
+
+
+
+
+
+
+
           // mapTypeId: 'satellite',
           
         };
@@ -364,6 +472,7 @@ var LocationsShowPage = {
           map: map,
           icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
           title: 'Click to zoom'
+
 
         });
 
@@ -535,27 +644,6 @@ var UserLocationsIndexPage = {
 
 
 
-// var UserLocationsShowPage = {
-//   template: "#users-locations-show-page",
-//   data: function() {
-//     return {
-//       location: {
-//         name: "",
-//         year: "",
-//         address: "",
-//         start_time: "",
-//         end_time: ""
-//         // location.location_story: "",
-//       }
-//     }
-//   },
-//   created: function() {
-//     axios.get("user_locations/" + this.$route.params.id )
-//       .then(function(response) {
-//         this.location = response.data;
-//       }.bind(this));
-//   }
-// };
 
 // // Authorization component
 
@@ -647,8 +735,8 @@ var router = new VueRouter({
   { path: "/locations/:id", component: LocationsShowPage},
   // {path: "/user_locations/:id", component: UserLocationsShowPage},
   { path: '/signup', component: SignupPage},
-  { path: '/login', component: LoginPage }
-  // { path: '/logout', component: LogoutPage}
+  { path: '/login', component: LoginPage },
+  { path: '/logout', component: LogoutPage}
   // {path: '/images', component: ImagesPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {

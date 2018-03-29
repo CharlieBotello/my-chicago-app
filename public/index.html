@@ -126,7 +126,7 @@
                       <a href="/#/login" class="nav-link p-0">Login</a>
                     </li>
                     <li class="nav-item g-mx-30--lg g-mb-7 g-mb-0--lg">
-                      <a href="#awards" class="nav-link p-0">Logout</a>
+                      <a href="/#/logout" class="nav-link p-0">Logout</a>
                     </li>
                     <li class="nav-item g-ml-30--lg">
                       <a href="#contact" class="nav-link p-0">Contact</a>
@@ -233,7 +233,7 @@
   <div class="vue-component">
 
     <!-- Section Content -->
-    <section id="home" class="u-bg-overlay g-pos-rel g-theme-bg-blue-dark-v1-opacity-0_8--after">
+    <section id="home" class="u-bg-overlay g-pos-rel g-theme-bg-blue-dark-v2-opacity-0_8--after">
       <div class="js-carousel"
            data-autoplay="true"
            data-infinite="true"
@@ -275,7 +275,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>locations </h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Take a dive into the citys's oldest and historically important locations.</p>
-                <a v-bind:href="/#/" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a href="/#/locations" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -287,7 +287,9 @@
                   <i class="icon-loop"></i>
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25"><br>Stories</h3>
-                <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Learn about the origin of the location, as well as stories from the time.</p>
+                <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">
+                Learn about the origins of the site, including stories associated with that time period.
+                </p>
                 <a v-bind:href="'/#/locations/' + Math.floor(Math.random() * 10 + 1)" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
@@ -300,8 +302,8 @@
                   <i class="icon-note"></i>
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Day<br>Planner</h3>
-                <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Venture in to the city's bucket list, plan a trip to the city's location.</p>
-                <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Plan and keep track of your trip</p>
+                <a href="/#/user_locations" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -314,7 +316,7 @@
                 </span>
                 <h3 class="text-uppercase g-line-height-1_2 g-font-weight-700 g-color-white g-mb-25">Signup<br>Today</h3>
                 <p class="g-font-size-13 g-color-white-opacity-0_7 g-mb-30">Plan and keep track of the locations you've visited, we're always adding new ones. </p>
-                <a href="#!" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
+                <a href="/#/signup" class="text-uppercase g-font-weight-700 g-font-size-11 g-text-underline--none--hover">Read More</a>
               </div>
             </div>
           </div>
@@ -447,53 +449,51 @@
 
 
     <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Back</a>
-    <div>
+    <!-- <div> -->
       
-    </div>
     <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="'/#/locations/' + Math.floor(Math.random() * 10 + 1)">Random location</a>
-    Search by Name: <input v-on:change="go()" v-model="searchName" list="names">
-
-
-        <datalist lazy id="names">
-          <option v-for="location in locations">{{ location.name }}</option>
-
-        </datalist>
-          
-    Search by year: <input v-model="searchYear" list="year" v-on:change="go()">
-        <datalist id ="year" >
-          <option v-for="location in locations">{{ location.year }}</option>
-        </datalist>
-        <button v-on:click="go()">Go</button>
-        <button v-on:click="showMap()">Map</button>
-
     </div>
+    <!-- <div class="container text-center g-max-width-750 g-mb-70">
+      <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-black g-mb-25">Available</h3>
+        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-color-primary g-font-size-40--md mb-0">Locations</h2>
+      </div>
+    </div> -->
+
+    <div id="search">
+    Search by Name: <input  v-model="searchName" list="names">      
+      
+      <datalist  lazy id="names">
+        <option v-for="location in locations">{{ location.name }}</option>
+
+      </datalist>
+          
+    Search by year: <input  v-model="searchYear" list="year" >
+      <datalist id ="year" >
+        <option v-for="location in locations">{{ location.year }}</option>
+      </datalist>
+      <button v-on:click="go()" v-if="charlie">GO</button>
+      <button v-on:click="go()" v-if="!charlie">Refresh</button>
+      <button v-on:click="showMap()">Map</button>
+    </div>
+    <!-- </div> -->
+
+
 
 
       
 
 
 
-    <div class="google-map" v-bind:id="mapName" v-if="validMap"></div>
+    <div id="map-style" class="google-map" v-bind:id="mapName" v-if="validMap"></div>
 
-      <div style="padding: 70px">
-        Search by Name: <input v-model="searchName" list="names">
-            <datalist  lazy id="names">
-              <option v-for="location in locations">{{ location.name }}</option>
-
-            </datalist>
-              
-        Search by year: <input v-model="searchYear" list="year">
-            <datalist id ="year">
-              <option v-for="location in locations">{{ location.year }}</option>
-            </datalist>
-        
-      </div>
 
     
-    <div style="padding: 70px" class="container text-center g-max-width-750 g-mb-70">
+    
+    <div style="padding: 100px" class="container text-center g-max-width-750 g-mb-70">
       <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
-        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25">Locations</h3>
-        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">Avaiable</h2>
+        <h3 class="h3 g-letter-spacing-5 g-font-size-12 g-font-weight-400 g-color-primary g-mb-25"></h3>
+        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-color-primary g-font-size-40--md mb-0">Locations</h2>
       </div>
     </div>
 
@@ -530,14 +530,29 @@
 
     <section id="projects" class="g-pt-100 g-pb-100--md">
       <div class="container text-center g-max-width-750 g-mb-70">
+
         <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
           <h2 class="h2 g-letter-spacing-5 g-font-size-30 g-font-weight-400 g-color-primary g-mb-25">{{ location.year }}</h2>
           <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-size-30 g-font-size-40--md mb-0">{{location.name}}</h2>
+
         </div>
+
         <!-- Modal begin -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<!--         <button style="float: left" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Add to Day planner
+        </button> -->
+        <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Add to Day planner
         </button>
+       <!--  <a style="float: right" class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Back</a> -->
+        <button v-on:click="showMap()" class="btn btn-primary">Show Map </button>
+<!--         <div class="col-md-12 col-lg-12">
+
+          <div  class="myMap">
+            <div v-if="validMap" class="google-map" id="map"></div>
+          </div>
+        </div> -->
+
       </div>
         <!-- <div class="google-map" id="map"></div>  -->
 
@@ -560,11 +575,11 @@
                 </ul>
                 <div id="form" class="form-group">
                   <label>Date of visit:</label>
-                  <input placeholder="Ex: year/mo/day" v-model="startTime">
+                  <input placeholder="year/mo/day" v-model="startTime">
                 </div>
                 <div id="form" class="form-group">
                   <label>Phone Num:</label>
-                  <input type="text" v-model="phoneNumber">
+                  <input type="text" placeholder="555-32-0123" v-model="phoneNumber">
                 </div>
               </div>
             </div>
@@ -598,7 +613,9 @@
       
       <div class="cotainer">
         <div class="row no-gutters">
-          <div class="col-md-6 col-lg-6">
+       
+          <div class="col-md-12 col-lg-6">
+
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -610,13 +627,13 @@
                   <img class="d-block img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSigzu4B5na1uVXokG5JGC72LfY2FMXH3UDiOz30K_EHVTofiVw" alt="First slide">
                 </div> -->
                 <div class="carousel-item active">
-                  <img class="d-block img-fluid" v-bind:src="location.origins_url" alt="First slide">
+                  <img id="index-image" class="d-block img-fluid" v-bind:src="location.origins_url" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block img-fluid" v-bind:src="location.chicago_url" alt="Second slide">
+                  <img id="index-image" class="d-block img-fluid" v-bind:src="location.chicago_url" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block img-fluid" v-bind:src="location.world_url" alt="Third slide">
+                  <img id="index-image" class="d-block img-fluid" v-bind:src="location.world_url" alt="Third slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -633,15 +650,12 @@
 
       
 
-
+          <!-- </div> -->
           </div>
           <div class="col-md-6 col-lg-6">
-            <button v-on:click="showMap()">Show Map</button>
-            <div class="myMap">
-              <div v-if="validMap" class="google-map" id="map">
-            </div>
-            
 
+            <div class="myMap">
+              <div v-if="validMap" class="google-map" id="map"></div>
             </div>
           </div>
         </div>
@@ -778,11 +792,11 @@
             <div class="col-lg-8">
               <!-- Heading -->
               <div class="text-center">
-                <span class="d-block g-color-primary g-font-size-17 text-uppercase mb-5">Your Locations Planner</span>
-                <h2 class="h1 g-color-black g-font-weight-600 mb-5">Dive into your<br>locations</h2>
-                <p class="lead mb-5">Explore every gem the city has to offer &amp; .</p>
+                <span class="d-block g-color-primary g-font-size-17 text-uppercase mb-5">Your Daily Planner</span>
+               <!--  <h2 class="h1 g-color-black g-font-weight-600 mb-5">Dive into your<br>locations</h2> -->
+                <p class="lead mb-5"></p>
 
-                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Go to locations</a>
+                <a class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" href="/#/locations">Go to locations</a>
               </div>
               <!-- End Heading -->
             </div>
@@ -831,13 +845,7 @@
                 </div>
               </article>
               <!-- End Article -->
-            </div>
-
-
-
-            
-   
-            
+            </div>    
           </div>
         </div>
       </section>
@@ -854,7 +862,7 @@
 
 
 
-<template id="users-locations-new-page">
+<!-- <template id="users-locations-new-page">
   <div class="vue-component">
 
     <div class="container">
@@ -881,7 +889,7 @@
     </div>
 
   </div>
-</template>
+</template> -->
 
 <template id="users-locations-edit-page">
   <div class="vue-component">

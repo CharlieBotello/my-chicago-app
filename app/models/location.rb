@@ -47,12 +47,20 @@ class Location < ApplicationRecord
     end
   end
   def chicago_image_url
+    if images[1]
     images[1].image_url
+    else
+      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
+    end
+
   end 
 
   def world_image_url
+    if images[2]
     images[2].image_url
- 
+    else 
+      "http://www.trbimg.com/img-53769950/turbine/ct-per-cab-wars-0518-b-jpg-20140516/2048/2048x1590"
+    end
   end 
 
   # def get_stories_world_title

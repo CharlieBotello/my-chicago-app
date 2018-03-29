@@ -34,12 +34,12 @@ class UserLocationsController < ApplicationController
 
     pretty_start_time = @user_location.start_time.strftime("%e%b%Y")
 
-
+    locat = @user_location.location.name
 
     client.messages.create(
     from: from,
     to: to,
-    body: "You are scheduled at #{pretty_start_time}!"
+    body: "Scheduled visit on #{pretty_start_time} at #{locat}"
     )
     else
       render json: {errors: @user_location.errors.full_messages}, status: :unprocessable_entity 
