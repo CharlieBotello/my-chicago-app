@@ -39,7 +39,7 @@ class UserLocationsController < ApplicationController
     client.messages.create(
     from: from,
     to: to,
-    body: "Scheduled visit on #{pretty_start_time} at #{locat}"
+    body: " You Scheduled a visit to #{locat} for #{pretty_start_time}"
     )
     else
       render json: {errors: @user_location.errors.full_messages}, status: :unprocessable_entity 

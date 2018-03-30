@@ -3,7 +3,7 @@ class UserLocation < ApplicationRecord
   belongs_to :location 
   def pretty_start_time
     if start_time
-      self.start_time.strftime("%b %e, %l:%M %p")
+      self.start_time.strftime("%b %d, %Y")
     else
       start_time
     end

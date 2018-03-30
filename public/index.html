@@ -461,20 +461,25 @@
     </div> -->
 
     <div id="search">
-    Search by Name: <input  v-model="searchName" list="names">      
+    <input  v-model="searchName" placeholder="Search by name" list="names">      
       
       <datalist  lazy id="names">
         <option v-for="location in locations">{{ location.name }}</option>
 
       </datalist>
           
-    Search by year: <input  v-model="searchYear" list="year" >
+   <input  v-model="searchYear" placeholder="Searh by year" list="year" >
       <datalist id ="year" >
         <option v-for="location in locations">{{ location.year }}</option>
       </datalist>
-      <button v-on:click="go()" v-if="charlie">GO</button>
-      <button v-on:click="go()" v-if="!charlie">Refresh</button>
-      <button v-on:click="showMap()">Map</button>
+      <button class="btn btn-primary g-font-size-8 rounded-right-30 g-px-25 g-py-15" v-on:click="go()" v-if="charlie">GO</button>
+      <button class="btn btn-primary g-font-size-8 rounded-right-30 g-px-25 g-py-15" v-on:click="go()" v-if="!charlie">Refresh</button>
+      <button class="btn btn-primary g-font-size-8 rounded-right-30 g-px-25 g-py-15" v-on:click="showMap()">Map</button>
+
+
+      <!-- <button v-on:click="go()" v-if="charlie">GO</button> -->
+      <!-- <button v-on:click="go()" v-if="!charlie">Refresh</button> -->
+      <!-- <button v-on:click="showMap()">Map</button> -->
     </div>
     <!-- </div> -->
 
@@ -545,6 +550,7 @@
           Add to Day planner
         </button>
        <!--  <a style="float: right" class="btn btn-xl u-btn-outline-black g-font-weight-600 g-font-size-default g-px-35" v-bind:href="/#/">Back</a> -->
+
         <button v-on:click="showMap()" class="btn btn-primary">Show Map </button>
 <!--         <div class="col-md-12 col-lg-12">
 
@@ -579,7 +585,7 @@
                 </div>
                 <div id="form" class="form-group">
                   <label>Phone Num:</label>
-                  <input type="text" placeholder="555-32-0123" v-model="phoneNumber">
+                  <input type="text" placeholder="555320123" v-model="phoneNumber">
                 </div>
               </div>
             </div>
