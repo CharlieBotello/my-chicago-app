@@ -22,6 +22,10 @@ class UserLocationsController < ApplicationController
     if @user_location.save
       render 'show.json.jbuilder'
       # render json: @user_location.as_json
+    
+
+    # ENV['pusher_account_sid']
+
     account_sid = 'AC0c99424d7f274ba0a6e6c7d432fd5586'
     auth_token = '86be9485e114facd530d29f2f67cbaf8'
     client = Twilio::REST::Client.new account_sid, auth_token
